@@ -3,6 +3,21 @@ import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 import { site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  Blocks,
+  Wrench,
+  Cpu,
+  FolderGit2,
+  Compass,
+  FileText,
+  Presentation,
+  Globe,
+  AudioLines,
+  Mic,
+  ScrollText,
+  Atom,
+  Container,
+} from "@lucide/astro";
 
 const title = "App Automaton | Open-source AI agent tooling by AppCubic";
 const description =
@@ -51,7 +66,7 @@ const structuredData = {
           use inside the studio.
         </p>
 
-        <h2>Skills that teach agents workflows</h2>
+        <h2><span class="sec-ic"><Blocks size={20} stroke-width={1.8} /></span>Skills that teach agents workflows</h2>
         <p>
           The flagship is <a href={`${org}/agent-designer`}>agent-designer</a>, a portable skills
           workspace with issue-driven planning and bridge scripts that let one agent consult another
@@ -66,7 +81,7 @@ const structuredData = {
           <a href="https://appautomaton.github.io/latex-arxiv-SKILL/">project page</a>.
         </p>
 
-        <h2>Harnesses that keep agents honest</h2>
+        <h2><span class="sec-ic"><Wrench size={20} stroke-width={1.8} /></span>Harnesses that keep agents honest</h2>
         <p>
           <a href={`${org}/automaton`}>automaton</a> is a stage-gated harness that walks an agent
           from framing through planning, review, execution, and verification, with durable state in
@@ -78,7 +93,7 @@ const structuredData = {
           <a href="https://appautomaton.github.io/docker-for-apple-container/">project page</a>.
         </p>
 
-        <h2>Models that run on the laptop</h2>
+        <h2><span class="sec-ic"><Cpu size={20} stroke-width={1.8} /></span>Models that run on the laptop</h2>
         <p>
           A third shelf is pure MLX work for Apple Silicon, with no cloud and no PyTorch.
           <a href={`${org}/mlx-speech`}>mlx-speech</a> covers speech synthesis, voice cloning, and
@@ -93,68 +108,97 @@ const structuredData = {
           <a href="https://appautomaton.github.io/mlx-atomistic/">documentation site</a>.
         </p>
 
-        <h2>Repositories to start with</h2>
+        <h2><span class="sec-ic"><FolderGit2 size={20} stroke-width={1.8} /></span>Repositories to start with</h2>
         <ul class="repo-list">
           <li>
-            <a href={`${org}/document-SKILLs`}>appautomaton/document-SKILLs</a>
-            <p>
-              Claude Code and Codex SKILLs for PDF, Excel, Word, and PowerPoint work: extraction,
-              forms, formulas, and tracked changes, adapted from Anthropic's skills.
-            </p>
+            <span class="repo-ic"><FileText size={18} stroke-width={1.8} /></span>
+            <div class="repo-body">
+              <a href={`${org}/document-SKILLs`}>appautomaton/document-SKILLs</a>
+              <p>
+                Claude Code and Codex SKILLs for PDF, Excel, Word, and PowerPoint work: extraction,
+                forms, formulas, and tracked changes, adapted from Anthropic's skills.
+              </p>
+            </div>
           </li>
           <li>
-            <a href={`${org}/presentation`}>appautomaton/presentation</a>
-            <p>
-              Claude Code and Codex SKILLs for consulting-quality decks: strategy storyboarding,
-              brand-system identity, and pixel-perfect PDF or editable PPTX output.
-            </p>
+            <span class="repo-ic"><Presentation size={18} stroke-width={1.8} /></span>
+            <div class="repo-body">
+              <a href={`${org}/presentation`}>appautomaton/presentation</a>
+              <p>
+                Claude Code and Codex SKILLs for consulting-quality decks: strategy storyboarding,
+                brand-system identity, and pixel-perfect PDF or editable PPTX output.
+              </p>
+            </div>
           </li>
           <li>
-            <a href={`${org}/webmaton`}>appautomaton/webmaton</a>
-            <p>
-              Portable web-research and browser-automation SKILLs for Claude Code, Codex, and
-              OpenCode: Playwright, Chrome DevTools, nodriver, and HTML to Markdown.
-            </p>
+            <span class="repo-ic"><Globe size={18} stroke-width={1.8} /></span>
+            <div class="repo-body">
+              <a href={`${org}/webmaton`}>appautomaton/webmaton</a>
+              <p>
+                Portable web-research and browser-automation SKILLs for Claude Code, Codex, and
+                OpenCode: Playwright, Chrome DevTools, nodriver, and HTML to Markdown.
+              </p>
+            </div>
           </li>
           <li>
-            <a href={`${org}/mlx-speech`}>appautomaton/mlx-speech</a>
-            <p>
-              Pure-MLX speech synthesis, voice cloning, dialogue, sound effects, and ASR for Apple
-              Silicon: Fish S2 Pro, VibeVoice, LongCat, MOSS, Step-Audio, and Cohere ASR.
-            </p>
+            <span class="repo-ic"><AudioLines size={18} stroke-width={1.8} /></span>
+            <div class="repo-body">
+              <a href={`${org}/mlx-speech`}>appautomaton/mlx-speech</a>
+              <p>
+                Pure-MLX speech synthesis, voice cloning, dialogue, sound effects, and ASR for Apple
+                Silicon: Fish S2 Pro, VibeVoice, LongCat, MOSS, Step-Audio, and Cohere ASR.
+              </p>
+              <a class="repo-page" href="https://appautomaton.github.io/mlx-speech/">Project page →</a>
+            </div>
           </li>
           <li>
-            <a href={`${org}/tnt-asr`}>appautomaton/tnt-asr</a>
-            <p>
-              A terminal voice-to-text TUI built on mlx-speech. Qwen3-ASR on the Apple GPU, fully
-              local, no PyTorch, transcribes in about a second.
-            </p>
+            <span class="repo-ic"><Mic size={18} stroke-width={1.8} /></span>
+            <div class="repo-body">
+              <a href={`${org}/tnt-asr`}>appautomaton/tnt-asr</a>
+              <p>
+                A terminal voice-to-text TUI built on mlx-speech. Qwen3-ASR on the Apple GPU, fully
+                local, no PyTorch, transcribes in about a second.
+              </p>
+              <a class="repo-page" href="https://appautomaton.github.io/tnt-asr/">Project page →</a>
+            </div>
           </li>
           <li>
-            <a href={`${org}/latex-arxiv-SKILL`}>appautomaton/latex-arxiv-SKILL</a>
-            <p>
-              A portable Agent Skill for Claude Code and Codex that turns a topic into an arXiv-ready
-              review paper. Gated literature discovery, an issue-by-issue writing loop, verified
-              citations, and a two-column IEEEtran PDF.
-            </p>
+            <span class="repo-ic"><ScrollText size={18} stroke-width={1.8} /></span>
+            <div class="repo-body">
+              <a href={`${org}/latex-arxiv-SKILL`}>appautomaton/latex-arxiv-SKILL</a>
+              <p>
+                A portable Agent Skill for Claude Code and Codex that turns a topic into an arXiv-ready
+                review paper. Gated literature discovery, an issue-by-issue writing loop, verified
+                citations, and a two-column IEEEtran PDF.
+              </p>
+              <a class="repo-page" href="https://appautomaton.github.io/latex-arxiv-SKILL/">Project page →</a>
+            </div>
           </li>
           <li>
-            <a href={`${org}/mlx-atomistic`}>appautomaton/mlx-atomistic</a>
-            <p>
-              An Apple-Silicon molecular dynamics and density-functional-theory runtime on MLX and
-              Metal. It runs on the Mac GPU with no CUDA, server, or cloud.
-            </p>
+            <span class="repo-ic"><Atom size={18} stroke-width={1.8} /></span>
+            <div class="repo-body">
+              <a href={`${org}/mlx-atomistic`}>appautomaton/mlx-atomistic</a>
+              <p>
+                An Apple-Silicon molecular dynamics and density-functional-theory runtime on MLX and
+                Metal. It runs on the Mac GPU with no CUDA, server, or cloud.
+              </p>
+              <a class="repo-page" href="https://appautomaton.github.io/mlx-atomistic/">Project page →</a>
+            </div>
           </li>
           <li>
-            <a href={`${org}/docker-for-apple-container`}>appautomaton/docker-for-apple-container</a>
-            <p>
-              A stateless docker shim over Apple's native container CLI on macOS. It runs docker and
-              docker compose with no Docker Desktop.
-            </p>
+            <span class="repo-ic"><Container size={18} stroke-width={1.8} /></span>
+            <div class="repo-body">
+              <a href={`${org}/docker-for-apple-container`}>appautomaton/docker-for-apple-container</a>
+              <p>
+                A stateless docker shim over Apple's native container CLI on macOS. It runs docker and
+                docker compose with no Docker Desktop.
+              </p>
+              <a class="repo-page" href="https://appautomaton.github.io/docker-for-apple-container/">Project page →</a>
+            </div>
           </li>
         </ul>
 
-        <h2>Where to start</h2>
+        <h2><span class="sec-ic"><Compass size={20} stroke-width={1.8} /></span>Where to start</h2>
         <p>
           The <a href={siteUrl}>App Automaton site</a> gives the full tour, including the anatomy of
           a skill and a three-command quickstart. If you would rather read code, start with
@@ -169,17 +213,54 @@ const structuredData = {
 </BaseLayout>
 
 <style>
+  /* Section heading icons, echoing the homepage .principle-icon badge */
+  .content h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sec-ic {
+    display: inline-grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    flex-shrink: 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--blue);
+    background: var(--nav-hover);
+  }
+
   .repo-list {
     list-style: none;
     padding: 0;
     margin: 0 0 1.5em;
   }
   .repo-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
     padding: 16px 0;
     border-bottom: 1px solid var(--line);
   }
   .repo-list li:first-child {
     border-top: 1px solid var(--line);
+  }
+  .repo-ic {
+    display: inline-grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--blue);
+    background: var(--nav-hover);
+  }
+  .repo-body {
+    display: flex;
+    flex-direction: column;
   }
   .repo-list a {
     font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -190,5 +271,15 @@ const structuredData = {
     margin: 6px 0 0;
     font-size: 0.95rem;
     color: var(--muted);
+  }
+  .repo-list .repo-page {
+    margin-top: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    width: fit-content;
+  }
+  .repo-list .repo-page:hover {
+    color: var(--blue);
   }
 </style>
