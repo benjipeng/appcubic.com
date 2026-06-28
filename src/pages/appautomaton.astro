@@ -59,7 +59,11 @@ const structuredData = {
           <a href="https://appautomaton.github.io/agent-designer/">deep-dive page</a>. Around it sit
           <a href={`${org}/document-SKILLs`}>document-SKILLs</a> for Word, Excel, PowerPoint, and PDF
           work, <a href={`${org}/presentation`}>presentation</a> for consulting-quality decks, and
-          <a href={`${org}/webmaton`}>webmaton</a> for web research with grounded citations.
+          <a href={`${org}/webmaton`}>webmaton</a> for web research with grounded citations. A newer
+          addition, <a href={`${org}/latex-arxiv-SKILL`}>latex-arxiv-SKILL</a>, turns a research
+          topic into an arXiv-ready review paper. It gates the outline for review, writes issue by
+          issue, and verifies every citation, with its own
+          <a href="https://appautomaton.github.io/latex-arxiv-SKILL/">project page</a>.
         </p>
 
         <h2>Harnesses that keep agents honest</h2>
@@ -67,9 +71,11 @@ const structuredData = {
           <a href={`${org}/automaton`}>automaton</a> is a stage-gated harness that walks an agent
           from framing through planning, review, execution, and verification, with durable state in
           the repository. <a href={`${org}/automux`}>automux</a> orchestrates several agents at once
-          in tmux, each in its own git worktree, coordinating through files. Smaller tools such as
-          <a href={`${org}/markmaton`}>markmaton</a> handle the sharp edges, like turning HTML into
-          clean Markdown.
+          in tmux, each in its own git worktree, coordinating through files. Smaller tools handle the
+          sharp edges. <a href={`${org}/markmaton`}>markmaton</a> turns HTML into clean Markdown, and
+          <a href={`${org}/docker-for-apple-container`}>docker-for-apple-container</a> runs docker and
+          docker compose on Apple's native container CLI with no Docker Desktop, with its own
+          <a href="https://appautomaton.github.io/docker-for-apple-container/">project page</a>.
         </p>
 
         <h2>Models that run on the laptop</h2>
@@ -80,7 +86,11 @@ const structuredData = {
           transcribes in about a second. <a href={`${org}/ltx-video-mlx`}>ltx-video-mlx</a> generates
           video with synchronized audio on device. <a href={`${org}/mlx-spatial`}>mlx-spatial</a>
           reconstructs 3D from images, turning photos into meshes, Gaussian splats, and point
-          clouds.
+          clouds. <a href={`${org}/mlx-cv`}>mlx-cv</a> adds detection, segmentation, and
+          open-vocabulary grounding. The newest work,
+          <a href={`${org}/mlx-atomistic`}>mlx-atomistic</a>, takes MLX into science, running
+          molecular dynamics and density functional theory on the Apple GPU, with its own
+          <a href="https://appautomaton.github.io/mlx-atomistic/">documentation site</a>.
         </p>
 
         <h2>Repositories to start with</h2>
@@ -118,6 +128,28 @@ const structuredData = {
             <p>
               A terminal voice-to-text TUI built on mlx-speech. Qwen3-ASR on the Apple GPU, fully
               local, no PyTorch, transcribes in about a second.
+            </p>
+          </li>
+          <li>
+            <a href={`${org}/latex-arxiv-SKILL`}>appautomaton/latex-arxiv-SKILL</a>
+            <p>
+              A portable Agent Skill for Claude Code and Codex that turns a topic into an arXiv-ready
+              review paper. Gated literature discovery, an issue-by-issue writing loop, verified
+              citations, and a two-column IEEEtran PDF.
+            </p>
+          </li>
+          <li>
+            <a href={`${org}/mlx-atomistic`}>appautomaton/mlx-atomistic</a>
+            <p>
+              An Apple-Silicon molecular dynamics and density-functional-theory runtime on MLX and
+              Metal. It runs on the Mac GPU with no CUDA, server, or cloud.
+            </p>
+          </li>
+          <li>
+            <a href={`${org}/docker-for-apple-container`}>appautomaton/docker-for-apple-container</a>
+            <p>
+              A stateless docker shim over Apple's native container CLI on macOS. It runs docker and
+              docker compose with no Docker Desktop.
             </p>
           </li>
         </ul>

@@ -1,0 +1,32 @@
+# AppCubic
+
+> An applied AI venture studio. AppCubic builds agentic systems, turns research into working products, and advises technical teams.
+
+AppCubic is an applied AI venture studio, building since 2019. The work sits where prototypes have to become dependable: agent workflows, scientific and analytical tooling, and the products that grow out of them. Much of the studio's agent and research tooling is open source under App Automaton.
+
+## What the studio does
+
+- Agentic systems: reliable agent workflows with clear tool boundaries and honest evaluation, carried toward production.
+- Research to product: scientific and analytical workflows turned into systems people can run, built for correctness and repeatability.
+- Venture studio and advisory: early product strategy, technical diligence, grant support, and incubation for AI-first products.
+
+## App Automaton, the open-source workshop
+
+App Automaton is the studio's open-source GitHub organization. Overview at https://appcubic.com/appautomaton/ and https://appautomaton.github.io.
+
+- [latex-arxiv-SKILL](https://appautomaton.github.io/latex-arxiv-SKILL/): a portable Agent Skill that turns a topic into an arXiv-ready ML review paper, gated and verified citation by citation.
+- [mlx-atomistic](https://appautomaton.github.io/mlx-atomistic/): an Apple-Silicon molecular dynamics and density-functional-theory runtime on MLX and Metal, with no CUDA, server, or cloud.
+- [docker-for-apple-container](https://appautomaton.github.io/docker-for-apple-container/): a stateless docker shim over Apple's native container CLI on macOS, with no Docker Desktop.
+- [agent-designer](https://appautomaton.github.io/agent-designer/): the skills workspace, with issue-driven workflows and bridge scripts for agent-to-agent delegation.
+- More across the organization: https://github.com/appautomaton
+
+## Links
+
+- [About](https://appcubic.com/about/): the studio and how it works.
+- [Research](https://research.appcubic.com): research systems.
+- [GitHub](https://github.com/appautomaton): open-source work.
+- [Benji Peng](https://benji.renocrypt.com): founder.
+
+## Optional
+
+- Sitemap: /sitemap-index.xml
