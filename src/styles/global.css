@@ -587,8 +587,8 @@ html[data-theme="dark"] .button.primary:hover {
 .post-card p,
 .principle p {
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 .service-card a,
@@ -701,7 +701,7 @@ html[data-theme="dark"] .button.primary:hover {
 .bento-cell p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.6;
 }
 
@@ -889,6 +889,7 @@ html[data-theme="dark"] .button.primary:hover {
 
 .content {
   font-size: 1.05rem;
+  line-height: 1.68;
   color: var(--hero-copy);
 }
 
