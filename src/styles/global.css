@@ -156,6 +156,8 @@ html[data-theme="dark"] {
 }
 
 html {
+  /* Author has a small optical size; 17px base compensates */
+  font-size: 106.25%;
   scroll-behavior: smooth;
 }
 
@@ -165,7 +167,7 @@ body {
   background: var(--paper);
   font-family: var(--font-body);
   font-weight: 430;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -972,7 +974,7 @@ html[data-theme="dark"] .button.primary:hover {
 
 @media (max-width: 768px) {
   body {
-    font-size: 15px;
+    font-size: 0.95rem;
   }
 
   .nav-shell {
