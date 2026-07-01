@@ -1,5 +1,6 @@
 ---
 import { site } from "../data/site";
+import BrandMark from "./BrandMark.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const links = [
@@ -12,16 +13,7 @@ const links = [
 <header class="site-header">
   <nav class="nav-shell" aria-label="Primary navigation">
     <a class="brand" href="/" aria-label={`${site.name} home`}>
-      <svg class="brand-mark" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
-        <defs>
-          <linearGradient id="brand-lid" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#6ba6ff"></stop>
-            <stop offset="1" stop-color="#9d7cff"></stop>
-          </linearGradient>
-        </defs>
-        <path d="M16 4 26.4 10 16 16 5.6 10 Z" fill="url(#brand-lid)"></path>
-        <path d="M16 4 26.4 10 26.4 22 16 28 5.6 22 5.6 10 Z M16 16 26.4 10 M16 16 5.6 10 M16 16 16 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
-      </svg>
+      <BrandMark />
       {site.name}
     </a>
     <div class="nav-links">

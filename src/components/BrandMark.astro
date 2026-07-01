@@ -1,0 +1,87 @@
+---
+// Animated nav logo: at rest it is the classic mark — pastel lid, wireframe
+// body. Every few seconds it does a stochastic free spin (random direction,
+// distance, and somersault wobble), showing the full pastel quartet while it
+// moves; when it settles, the side colors fade and the lid lands on the next
+// pastel. Hover triggers a tumble. Static rest pose under reduced motion.
+---
+
+<svg id="brand-cube" class="brand-mark" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"></svg>
+
+<style>
+  #brand-cube {
+    overflow: visible;
+  }
+  #brand-cube :global(.cube-face) {
+    transition: fill 0.55s ease;
+  }
+</style>
+
+<script>
+  import { makeCube, easeOutElastic, TOP_FACE, prefersReducedMotion } from "../scripts/cube3d.js";
+
+  const svg = document.getElementById("brand-cube");
+  if (svg) {
+    const NEUTRAL = "--paper";
+    const SIDES = { 0: "--peri-2", 1: "--blush-2", 2: "--mint-2", 3: "--butter-2", 5: "--blush-2" };
+    const LIDS = ["--peri-2", "--mint-2", "--blush-2", "--butter-2"];
+    const REST = 5200;
+
+    const cube = makeCube(svg, 9.6, 2, ["--paper", "--paper", "--paper", "--paper", LIDS[0], "--paper"]);
+    const restPose = Math.PI / 4;
+
+    if (prefersReducedMotion()) {
+      cube.render(16, 16, restPose, 0);
+    } else {
+      let lidIdx = 0;
+      let from = restPose, to = restPose, t0 = -1e9, settled = true;
+      let plan = { dur: 1, ease: (t) => t, nod: () => 0 };
+      let nextAt = performance.now() + 2200 + Math.random() * 1800;
+
+      const makePlan = () => {
+        const dir = Math.random() < 0.5 ? -1 : 1;
+        const quarterTurns = [3, 4, 4, 5, 6][Math.floor(Math.random() * 5)];
+        const A = (0.25 + Math.random() * 0.4) * (Math.random() < 0.5 ? -1 : 1);
+        const B = (Math.random() - 0.5) * 0.5;
+        return {
+          step: dir * quarterTurns * Math.PI / 2,
+          dur: 950 + quarterTurns * 130,
+          ease: easeOutElastic,
+          nod: (p) => A * Math.sin(Math.PI * p) + B * Math.sin(2 * Math.PI * p),
+        };
+      };
+
+      const trigger = (now) => {
+        plan = makePlan();
+        from = to;
+        to = from + plan.step;
+        t0 = now;
+        settled = false;
+        nextAt = now + plan.dur + REST + Math.random() * 2400;
+        for (const [i, c] of Object.entries(SIDES)) cube.setFace(+i, c);
+        lidIdx = (lidIdx + 1) % LIDS.length;
+        setTimeout(() => cube.setFace(TOP_FACE, LIDS[lidIdx]), plan.dur * 0.45);
+      };
+
+      svg.closest(".brand")?.addEventListener("mouseenter", () => {
+        const n = performance.now();
+        if (n > t0 + plan.dur) trigger(n);
+      });
+
+      const frame = (now) => {
+        if (now >= nextAt) trigger(now);
+        const p = Math.min(1, (now - t0) / plan.dur);
+        if (!settled) {
+          cube.render(16, 16, from + (to - from) * plan.ease(p), p < 1 ? plan.nod(p) : 0);
+          if (p >= 1) {
+            settled = true;
+            for (const i of Object.keys(SIDES)) cube.setFace(+i, NEUTRAL);
+          }
+        }
+        requestAnimationFrame(frame);
+      };
+      cube.render(16, 16, restPose, 0);
+      requestAnimationFrame(frame);
+    }
+  }
+</script>

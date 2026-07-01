@@ -5,3 +5,6 @@ dist/
 .env
 .env.*
 npm-debug.log*
+
+# local browser-automation artifacts
+.playwright-cli/

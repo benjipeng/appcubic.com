@@ -1,67 +1,154 @@
+@font-face {
+  font-family: "Zodiak";
+  src: url("/fonts/Zodiak-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zodiak";
+  src: url("/fonts/Zodiak-VariableItalic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-VariableItalic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Monaspace Neon";
+  src: url("/fonts/MonaspaceNeon-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Monaspace Neon";
+  src: url("/fonts/MonaspaceNeon-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Porcelain day / night garden */
 :root {
   color-scheme: light;
-  --font-display: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --ink: #0e1018;
-  --muted: #5b6172;
-  --paper: #fafbfd;
-  --panel: #ffffff;
-  --line: rgba(14, 16, 24, 0.08);
-  --line-strong: rgba(14, 16, 24, 0.18);
-  --soft: #f0f1f5;
-  --section-alt: #f4f5f9;
-  --header-bg: rgba(250, 251, 253, 0.8);
-  --nav-hover: rgba(14, 16, 24, 0.04);
-  --accent: #0e1018;
-  --accent-glow: rgba(14, 16, 24, 0.05);
-  --blue: #3b6ff0;
-  --violet: #7c5cff;
-  --teal: #14b8a6;
-  --ok: #2da44e;
-  --brand-gradient: linear-gradient(135deg, #3b6ff0 0%, #7c5cff 100%);
-  --hero-copy: #5b6172;
-  --eyebrow: #717689;
+  --font-display: "Zodiak", Georgia, "Times New Roman", serif;
+  --font-body: "Switzer", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Zodiak", Georgia, "Times New Roman", serif;
+  --font-mono: "Monaspace Neon", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --ink: #1c1b22;
+  --muted: #6b6875;
+  --paper: #faf8f5;
+  --panel: #fffefc;
+  --line: rgba(28, 27, 34, 0.1);
+  --line-strong: rgba(28, 27, 34, 0.2);
+  --soft: #f2efea;
+  --section-alt: #f4f1ec;
+  --header-bg: rgba(250, 248, 245, 0.82);
+  --nav-hover: rgba(28, 27, 34, 0.05);
+  --accent: #5a5fcf;
+  --accent-glow: rgba(90, 95, 207, 0.09);
+  --blue: #5a5fcf;
+  --ok: #4a8a68;
+  --brand-gradient: linear-gradient(135deg, #adb5f0 0%, #efc6d0 100%);
+  --hero-copy: #5f5c69;
+  --eyebrow: #77737f;
   --hero-overlay:
-    radial-gradient(50% 45% at 50% 0%, rgba(59, 111, 240, 0.10) 0%, transparent 65%),
-    radial-gradient(36% 32% at 78% 16%, rgba(124, 92, 255, 0.07) 0%, transparent 60%),
-    radial-gradient(30% 28% at 20% 20%, rgba(20, 184, 166, 0.05) 0%, transparent 60%);
-  --footer-bg: #f4f5f9;
-  --footer-muted: #717689;
-  --shadow: 0 8px 30px rgba(14, 16, 24, 0.04);
-  --glass-border: rgba(14, 16, 24, 0.06);
+    radial-gradient(46% 42% at 72% 8%, rgba(242, 226, 184, 0.4) 0%, transparent 65%),
+    radial-gradient(38% 34% at 18% 24%, rgba(173, 181, 240, 0.22) 0%, transparent 60%),
+    radial-gradient(30% 30% at 50% 90%, rgba(239, 198, 208, 0.18) 0%, transparent 60%);
+  --footer-bg: #f4f1ec;
+  --footer-muted: #77737f;
+  --shadow: 0 8px 30px rgba(28, 27, 34, 0.05);
+  --glass-border: rgba(28, 27, 34, 0.07);
+
+  /* Pastel quartet: 1 = top face, 2 = left face, 3 = right face */
+  --peri-1: #d3d8f8;
+  --peri-2: #adb5f0;
+  --peri-3: #8f97e8;
+  --blush-1: #f6dde3;
+  --blush-2: #efc6d0;
+  --blush-3: #e2a8b8;
+  --mint-1: #daeee3;
+  --mint-2: #bfe0ce;
+  --mint-3: #9cccb2;
+  --butter-1: #f8ecc9;
+  --butter-2: #f2e2b8;
+  --butter-3: #e5cd8f;
+
+  /* Hero scenery */
+  --art-celestial: #f5d98f;
+  --art-glow: #f2e2b8;
+  --art-crater: #d9d5e4;
+  --art-star: #8f97e8;
+  --art-stroke: rgba(28, 27, 34, 0.55);
+  --art-orbit: rgba(28, 27, 34, 0.28);
 }
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --ink: #eef0f6;
-  --muted: #9aa0b2;
-  --paper: #0a0b0f;
-  --panel: #10121a;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.18);
-  --soft: #12141c;
-  --section-alt: #07080c;
-  --header-bg: rgba(10, 11, 15, 0.72);
-  --nav-hover: rgba(255, 255, 255, 0.06);
-  --accent: #ffffff;
-  --accent-glow: rgba(120, 150, 255, 0.10);
-  --blue: #6ba6ff;
-  --violet: #9d7cff;
-  --teal: #2dd4bf;
-  --ok: #4ade80;
-  --brand-gradient: linear-gradient(135deg, #6ba6ff 0%, #9d7cff 100%);
-  --hero-copy: #a3a8ba;
-  --eyebrow: #8b90a2;
+  --ink: #edebf0;
+  --muted: #9b97a8;
+  --paper: #131218;
+  --panel: #1a1922;
+  --line: rgba(237, 235, 240, 0.09);
+  --line-strong: rgba(237, 235, 240, 0.2);
+  --soft: #201f29;
+  --section-alt: #100f15;
+  --header-bg: rgba(19, 18, 24, 0.78);
+  --nav-hover: rgba(237, 235, 240, 0.06);
+  --accent: #a9aef7;
+  --accent-glow: rgba(169, 174, 247, 0.12);
+  --blue: #a9aef7;
+  --ok: #7fc9a4;
+  --brand-gradient: linear-gradient(135deg, #8f97e8 0%, #e3a9ba 100%);
+  --hero-copy: #aca8b8;
+  --eyebrow: #8d899b;
   --hero-overlay:
-    radial-gradient(50% 45% at 50% 0%, rgba(80, 130, 255, 0.16) 0%, transparent 65%),
-    radial-gradient(36% 32% at 78% 16%, rgba(157, 124, 255, 0.10) 0%, transparent 60%),
-    radial-gradient(30% 28% at 20% 20%, rgba(45, 212, 191, 0.06) 0%, transparent 60%);
-  --footer-bg: #07080c;
-  --footer-muted: #6c7184;
+    radial-gradient(46% 42% at 72% 8%, rgba(143, 151, 232, 0.18) 0%, transparent 65%),
+    radial-gradient(38% 34% at 18% 24%, rgba(227, 169, 186, 0.08) 0%, transparent 60%),
+    radial-gradient(30% 30% at 50% 90%, rgba(147, 205, 178, 0.06) 0%, transparent 60%);
+  --footer-bg: #100f15;
+  --footer-muted: #77737f;
   --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(237, 235, 240, 0.1);
+
+  --peri-1: #5c63ab;
+  --peri-2: #464c8a;
+  --peri-3: #333868;
+  --blush-1: #8a5a6e;
+  --blush-2: #6e4657;
+  --blush-3: #523341;
+  --mint-1: #4e7a65;
+  --mint-2: #3c5f4e;
+  --mint-3: #2b463a;
+  --butter-1: #8a7a52;
+  --butter-2: #6e6140;
+  --butter-3: #52482f;
+
+  --art-celestial: #e9e6f0;
+  --art-glow: #8f97e8;
+  --art-crater: #c5c1d4;
+  --art-star: #d3d8f8;
+  --art-stroke: rgba(237, 235, 240, 0.5);
+  --art-orbit: rgba(237, 235, 240, 0.24);
 }
 
 * {
@@ -112,14 +199,19 @@ p {
 
 h1,
 h2,
-h3,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 480;
+  letter-spacing: 0.005em;
+}
+
 .brand,
 .footer-brand,
 .button,
 .nav-link,
 .nav-cta {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  font-family: var(--font-body);
+  letter-spacing: -0.01em;
 }
 
 .section-label,
@@ -128,7 +220,8 @@ h3,
 .principle strong,
 .tag-list li {
   font-family: var(--font-mono);
-  letter-spacing: 0.02em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -308,61 +401,51 @@ html[data-theme="dark"] .moon-icon {
 .hero {
   position: relative;
   display: flex;
-  min-height: 80svh;
+  min-height: 82svh;
   align-items: center;
-  justify-content: center;
   isolation: isolate;
   overflow: hidden;
   background: var(--hero-overlay);
-  text-align: center;
 }
 
 .hero-content {
   width: min(1040px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 84px 0 84px;
-  display: flex;
-  flex-direction: column;
+  padding: 64px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   align-items: center;
+  gap: 48px;
+}
+
+.hero-figure {
+  min-width: 0;
 }
 
 .eyebrow {
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   color: var(--eyebrow);
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 6px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--nav-hover);
-  backdrop-filter: blur(8px);
+  font-size: 0.72rem;
 }
 
 .hero h1 {
-  max-width: 800px;
   margin-bottom: 24px;
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-  background: linear-gradient(to bottom right, var(--ink) 30%, var(--muted));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: clamp(2.6rem, 5.2vw, 3.9rem);
+  line-height: 1.08;
+  color: var(--ink);
 }
 
 .hero-copy {
-  max-width: 600px;
+  max-width: 540px;
   color: var(--hero-copy);
   font-size: 1.125rem;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .hero-actions,
 .section-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 16px;
   margin-top: 36px;
 }
@@ -439,10 +522,9 @@ html[data-theme="dark"] .button.primary:hover {
 .section h2,
 .page-title {
   color: var(--ink);
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
+  font-size: 2.35rem;
+  font-weight: 480;
+  line-height: 1.15;
 }
 
 .section-header p,
@@ -635,7 +717,7 @@ html[data-theme="dark"] .button.primary:hover {
 
 .bento-term .t-prompt {
   color: var(--blue);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .bento-term .t-cmd {
@@ -645,6 +727,34 @@ html[data-theme="dark"] .button.primary:hover {
 .bento-term .t-ok {
   display: block;
   color: var(--ok);
+}
+
+.bento-cubes {
+  position: absolute;
+  right: 28px;
+  bottom: 60px;
+  width: 150px;
+  height: auto;
+  pointer-events: none;
+}
+
+.bento-cubes polygon {
+  stroke: var(--art-stroke);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.bento-cubes .c-a.top { fill: var(--peri-1); }
+.bento-cubes .c-a.left { fill: var(--peri-2); }
+.bento-cubes .c-a.right { fill: var(--peri-3); }
+.bento-cubes .c-b.top { fill: var(--butter-1); }
+.bento-cubes .c-b.left { fill: var(--butter-2); }
+.bento-cubes .c-b.right { fill: var(--butter-3); }
+
+@media (max-width: 768px) {
+  .bento-cubes {
+    display: none;
+  }
 }
 
 .bento-link {
@@ -678,15 +788,12 @@ html[data-theme="dark"] .button.primary:hover {
 }
 
 .bento-stat-num {
-  font-family: var(--font-mono);
-  font-size: 2.4rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.6rem;
+  font-weight: 480;
   line-height: 1;
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent);
 }
 
 .bento-stat-lbl {
@@ -848,8 +955,15 @@ html[data-theme="dark"] .button.primary:hover {
 }
 
 @media (max-width: 900px) {
-  .hero h1 {
-    font-size: 3.25rem;
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .hero-figure {
+    order: -1;
+    max-width: 420px;
+    margin: 0 auto;
   }
 }
 
@@ -886,15 +1000,11 @@ html[data-theme="dark"] .button.primary:hover {
   }
 
   .hero {
-    min-height: 60svh;
+    min-height: auto;
   }
 
   .hero-content {
-    padding: 64px 0 48px;
-  }
-
-  .hero h1 {
-    font-size: 2.75rem;
+    padding: 40px 0 56px;
   }
 
   .hero-copy {

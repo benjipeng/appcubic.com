@@ -1,0 +1,199 @@
+---
+// Orrery hero: pastel cubes tumble in true 3D while orbiting the sun/moon,
+// scaling and brightening as they swing near, passing behind the disc with
+// correct occlusion. Orbits are implied by comet-dust trails. The scenery is
+// painted with CSS variables, so the theme toggle flips the whole scene:
+// butter sun with a rotating corona by day; cratered moon in halo rings with
+// stars by night. Cubes and trails are built by script; reduced motion gets a
+// single static frame.
+---
+
+<svg
+  id="orrery"
+  class="hero-art"
+  viewBox="0 0 640 480"
+  fill="none"
+  role="img"
+  aria-labelledby="hero-art-title"
+>
+  <title id="hero-art-title">Pastel cubes orbiting a sun that becomes a moon at night</title>
+  <circle class="sky-glow" cx="320" cy="240" r="110"></circle>
+  <g class="stars" aria-hidden="true">
+    <circle cx="80" cy="60" r="2"></circle>
+    <circle cx="190" cy="36" r="1.4"></circle>
+    <circle cx="520" cy="50" r="2"></circle>
+    <circle cx="586" cy="150" r="1.5"></circle>
+    <circle cx="60" cy="190" r="1.4"></circle>
+    <circle cx="320" cy="26" r="1.6"></circle>
+    <circle cx="560" cy="330" r="1.4"></circle>
+    <circle cx="96" cy="388" r="1.6"></circle>
+  </g>
+  <circle class="halo" cx="320" cy="240" r="62" stroke-width="1"></circle>
+  <circle class="halo" cx="320" cy="240" r="78" stroke-width="0.6"></circle>
+  <g id="orrery-trails"></g>
+  <g id="orrery-stage">
+    <g id="orrery-disc">
+      <g id="orrery-corona" class="corona">
+        <line x1="374" y1="240" x2="383" y2="240"></line>
+        <line x1="358.2" y1="278.2" x2="364.5" y2="284.5"></line>
+        <line x1="320" y1="294" x2="320" y2="303"></line>
+        <line x1="281.8" y1="278.2" x2="275.5" y2="284.5"></line>
+        <line x1="266" y1="240" x2="257" y2="240"></line>
+        <line x1="281.8" y1="201.8" x2="275.5" y2="195.5"></line>
+        <line x1="320" y1="186" x2="320" y2="177"></line>
+        <line x1="358.2" y1="201.8" x2="364.5" y2="195.5"></line>
+      </g>
+      <circle class="disc" cx="320" cy="240" r="42"></circle>
+      <g class="craters">
+        <circle cx="307" cy="230" r="7"></circle>
+        <circle cx="330" cy="252" r="4.6"></circle>
+        <circle cx="335" cy="225" r="3"></circle>
+      </g>
+    </g>
+  </g>
+</svg>
+
+<style>
+  .hero-art {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .sky-glow {
+    fill: var(--art-glow);
+    filter: blur(42px);
+    opacity: 0.5;
+  }
+
+  .disc {
+    fill: var(--art-celestial);
+    transition: fill 400ms ease;
+  }
+
+  .craters {
+    fill: var(--art-crater);
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
+
+  html[data-theme="dark"] .craters {
+    opacity: 1;
+  }
+
+  .stars {
+    fill: var(--art-star);
+    opacity: 0;
+    transition: opacity 500ms ease;
+  }
+
+  html[data-theme="dark"] .stars {
+    opacity: 1;
+  }
+
+  .corona {
+    stroke: var(--art-celestial);
+    stroke-width: 2;
+    stroke-linecap: round;
+    opacity: 0.8;
+    transition: opacity 400ms ease;
+  }
+
+  html[data-theme="dark"] .corona {
+    opacity: 0;
+  }
+
+  .halo {
+    fill: none;
+    stroke: var(--art-star);
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
+
+  html[data-theme="dark"] .halo {
+    opacity: 0.5;
+  }
+</style>
+
+<script>
+  import { makeCube, el, prefersReducedMotion } from "../scripts/cube3d.js";
+
+  const svg = document.getElementById("orrery");
+  if (svg) {
+    const CX = 320, CY = 240;
+    const trailsG = document.getElementById("orrery-trails");
+    const stage = document.getElementById("orrery-stage");
+    const discG = document.getElementById("orrery-disc");
+    const corona = document.getElementById("orrery-corona");
+
+    const family = (f) => [`--${f}-2`, `--${f}-3`, `--${f}-2`, `--${f}-3`, `--${f}-1`, `--${f}-3`];
+    const ORBITS = [
+      { rx: 118, ry: 44, tiltDeg: -6, speed: 0.30, half: 13, wy: 0.55, wx: 0.23, phase: 1.1, fam: "butter", trail: "--butter-3", depthPar: 4 },
+      { rx: 205, ry: 78, tiltDeg: 4, speed: 0.185, half: 19, wy: -0.42, wx: 0.31, phase: 3.9, fam: "blush", trail: "--blush-3", depthPar: 9 },
+      { rx: 288, ry: 112, tiltDeg: -3, speed: 0.115, half: 26, wy: 0.34, wx: -0.19, phase: 5.6, fam: "peri", trail: "--peri-3", depthPar: 15 },
+    ];
+    const TRAIL_N = 22;
+
+    let parX = 0, parY = 0;
+    const bodies = ORBITS.map((o) => {
+      const cube = makeCube(stage, o.half, 1.3, family(o.fam));
+      const dots = Array.from({ length: TRAIL_N }, () => el("circle", { fill: `var(${o.trail})`, r: 0 }, trailsG));
+      return { ...o, cube, tilt: (o.tiltDeg * Math.PI) / 180, dots, z: 0 };
+    });
+
+    function orbitPos(b, a) {
+      const ox = Math.cos(a) * b.rx, oy = Math.sin(a) * b.ry;
+      const rx = ox * Math.cos(b.tilt) - oy * Math.sin(b.tilt);
+      const ry = ox * Math.sin(b.tilt) + oy * Math.cos(b.tilt);
+      return [CX + rx + parX * b.depthPar, CY + ry * 0.9 + parY * b.depthPar, Math.sin(a)];
+    }
+
+    let coronaSpin = 0;
+    function renderFrame(t) {
+      coronaSpin += 0.0011;
+      corona.setAttribute("transform", `rotate(${(coronaSpin * 57.3).toFixed(2)} ${CX} ${CY})`);
+
+      for (const b of bodies) {
+        const a = t * b.speed + b.phase;
+        const [x, y, z] = orbitPos(b, a); // z: -1 far … +1 near
+        const scale = 1 + 0.33 * z;
+        b.cube.g.style.opacity = (0.72 + 0.28 * z).toFixed(2);
+        b.cube.render(x, y, t * b.wy, Math.sin(t * b.wx) * 0.35, scale);
+        b.z = z;
+
+        const gap = (b.half * 1.7) / Math.max(b.rx, 60);
+        b.dots.forEach((d, i) => {
+          const [tx, ty, tz] = orbitPos(b, a - gap - (i / TRAIL_N) * 0.85);
+          d.setAttribute("cx", tx.toFixed(2));
+          d.setAttribute("cy", ty.toFixed(2));
+          d.setAttribute("r", ((2.9 * (1 - i / TRAIL_N) + 0.5) * (1 + 0.25 * tz)).toFixed(2));
+          d.setAttribute("opacity", (0.55 * (1 - i / TRAIL_N) * (0.7 + 0.3 * tz)).toFixed(2));
+        });
+      }
+      // painter's order: far cubes, disc, near cubes
+      const sorted = [...bodies].sort((p, q) => p.z - q.z);
+      for (const b of sorted) if (b.z < 0) stage.appendChild(b.cube.g);
+      stage.appendChild(discG);
+      for (const b of sorted) if (b.z >= 0) stage.appendChild(b.cube.g);
+    }
+
+    if (prefersReducedMotion()) {
+      renderFrame(0);
+    } else {
+      const hero = svg.closest(".hero");
+      hero?.addEventListener("mousemove", (e) => {
+        const bb = hero.getBoundingClientRect();
+        parX = (e.clientX - bb.left) / bb.width - 0.5;
+        parY = (e.clientY - bb.top) / bb.height - 0.5;
+      });
+      hero?.addEventListener("mouseleave", () => { parX = parY = 0; });
+
+      const loop = (now) => {
+        renderFrame(now / 1000);
+        requestAnimationFrame(loop);
+      };
+      requestAnimationFrame(loop);
+    }
+  }
+</script>

@@ -52,8 +52,8 @@ const structuredData = {
       <h1 class="page-title">App Automaton, the studio's <em>open workshop</em>.</h1>
       <p class="page-lede">
         App Automaton is where AppCubic builds in public. It is a GitHub organization of MIT-licensed
-        tooling for AI coding agents, introduced at
-        <a href={siteUrl}>appautomaton.github.io</a> and developed at
+        tooling for AI coding agents, introduced at{" "}
+        <a href={siteUrl}>appautomaton.github.io</a> and developed at{" "}
         <a href={org}>github.com/appautomaton</a>.
       </p>
 
@@ -70,14 +70,14 @@ const structuredData = {
         <p>
           The flagship is <a href={`${org}/agent-designer`}>agent-designer</a>, a portable skills
           workspace with issue-driven planning and bridge scripts that let one agent consult another
-          without losing the session. It has its own
-          <a href="https://appautomaton.github.io/agent-designer/">deep-dive page</a>. Around it sit
+          without losing the session. It has its own{" "}
+          <a href="https://appautomaton.github.io/agent-designer/">deep-dive page</a>. Around it sit{" "}
           <a href={`${org}/document-SKILLs`}>document-SKILLs</a> for Word, Excel, PowerPoint, and PDF
-          work, <a href={`${org}/presentation`}>presentation</a> for consulting-quality decks, and
+          work, <a href={`${org}/presentation`}>presentation</a> for consulting-quality decks, and{" "}
           <a href={`${org}/webmaton`}>webmaton</a> for web research with grounded citations. A newer
           addition, <a href={`${org}/latex-arxiv-SKILL`}>latex-arxiv-SKILL</a>, turns a research
           topic into an arXiv-ready review paper. It gates the outline for review, writes issue by
-          issue, and verifies every citation, with its own
+          issue, and verifies every citation, with its own{" "}
           <a href="https://appautomaton.github.io/latex-arxiv-SKILL/">project page</a>.
         </p>
 
@@ -87,24 +87,24 @@ const structuredData = {
           from framing through planning, review, execution, and verification, with durable state in
           the repository. <a href={`${org}/automux`}>automux</a> orchestrates several agents at once
           in tmux, each in its own git worktree, coordinating through files. Smaller tools handle the
-          sharp edges. <a href={`${org}/markmaton`}>markmaton</a> turns HTML into clean Markdown, and
+          sharp edges. <a href={`${org}/markmaton`}>markmaton</a> turns HTML into clean Markdown, and{" "}
           <a href={`${org}/docker-for-apple-container`}>docker-for-apple-container</a> runs docker and
-          docker compose on Apple's native container CLI with no Docker Desktop, with its own
+          docker compose on Apple's native container CLI with no Docker Desktop, with its own{" "}
           <a href="https://appautomaton.github.io/docker-for-apple-container/">project page</a>.
         </p>
 
         <h2><span class="sec-ic"><Cpu size={20} stroke-width={1.8} /></span>Models that run on the laptop</h2>
         <p>
-          A third shelf is pure MLX work for Apple Silicon, with no cloud and no PyTorch.
+          A third shelf is pure MLX work for Apple Silicon, with no cloud and no PyTorch.{" "}
           <a href={`${org}/mlx-speech`}>mlx-speech</a> covers speech synthesis, voice cloning, and
           recognition. <a href={`${org}/tnt-asr`}>tnt-asr</a> is a terminal voice-to-text tool that
           transcribes in about a second. <a href={`${org}/ltx-video-mlx`}>ltx-video-mlx</a> generates
-          video with synchronized audio on device. <a href={`${org}/mlx-spatial`}>mlx-spatial</a>
+          video with synchronized audio on device. <a href={`${org}/mlx-spatial`}>mlx-spatial</a>{" "}
           reconstructs 3D from images, turning photos into meshes, Gaussian splats, and point
           clouds. <a href={`${org}/mlx-cv`}>mlx-cv</a> adds detection, segmentation, and
-          open-vocabulary grounding. The newest work,
+          open-vocabulary grounding. The newest work,{" "}
           <a href={`${org}/mlx-atomistic`}>mlx-atomistic</a>, takes MLX into science, running
-          molecular dynamics and density functional theory on the Apple GPU, with its own
+          molecular dynamics and density functional theory on the Apple GPU, with its own{" "}
           <a href="https://appautomaton.github.io/mlx-atomistic/">documentation site</a>.
         </p>
 
@@ -201,9 +201,9 @@ const structuredData = {
         <h2><span class="sec-ic"><Compass size={20} stroke-width={1.8} /></span>Where to start</h2>
         <p>
           The <a href={siteUrl}>App Automaton site</a> gives the full tour, including the anatomy of
-          a skill and a three-command quickstart. If you would rather read code, start with
+          a skill and a three-command quickstart. If you would rather read code, start with{" "}
           <a href={`${org}/agent-designer`}>agent-designer on GitHub</a> and work outward. Everything
-          is MIT licensed, and issues and pull requests are welcome across the
+          is MIT licensed, and issues and pull requests are welcome across the{" "}
           <a href={org}>organization</a>.
         </p>
       </div>
@@ -263,9 +263,9 @@ const structuredData = {
     flex-direction: column;
   }
   .repo-list a {
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
   }
   .repo-list p {
     margin: 6px 0 0;

@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
+import HeroArt from "../components/HeroArt.astro";
 import Nav from "../components/Nav.astro";
 import { site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -11,15 +12,20 @@ import { ChartNoAxesCombined, ShieldCheck, Workflow } from "@lucide/astro";
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
-        <p class="eyebrow">An applied AI venture studio, building since 2019</p>
-        <h1 id="hero-title">AppCubic</h1>
-        <p class="hero-copy">
-          AppCubic builds AI systems that hold up <em>in real work</em>: agent workflows, research
-          tooling, and the products that grow out of them.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="/about/">Explore the studio</a>
-          <a class="button secondary" href={site.links.research}>Research systems</a>
+        <div class="hero-text">
+          <p class="eyebrow">AppCubic · Applied AI studio · Building since 2019</p>
+          <h1 id="hero-title">AI systems that hold up <em>in real work</em>.</h1>
+          <p class="hero-copy">
+            Agent workflows, research tooling, and the products that grow out of them — built,
+            tested, and carried to production by a small studio that ships.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="/about/">Explore the studio</a>
+            <a class="button secondary" href={site.links.research}>Research systems</a>
+          </div>
+        </div>
+        <div class="hero-figure">
+          <HeroArt />
         </div>
       </div>
     </section>
@@ -48,6 +54,14 @@ import { ChartNoAxesCombined, ShieldCheck, Workflow } from "@lucide/astro";
               <span class="t-cmd">gh repo clone appautomaton/agent-designer</span>
               <span class="t-ok">✓ skills · bridges · issue-driven workflow</span>
             </div>
+            <svg class="bento-cubes" viewBox="0 0 160 110" fill="none" aria-hidden="true">
+              <polygon class="c-a left" points="30.6,50 60,67 60,101 30.6,84"></polygon>
+              <polygon class="c-a right" points="89.4,50 60,67 60,101 89.4,84"></polygon>
+              <polygon class="c-a top" points="60,33 89.4,50 60,67 30.6,50"></polygon>
+              <polygon class="c-b left" points="104.4,40 120,49 120,67 104.4,58"></polygon>
+              <polygon class="c-b right" points="135.6,40 120,49 120,67 135.6,58"></polygon>
+              <polygon class="c-b top" points="120,31 135.6,40 120,49 104.4,40"></polygon>
+            </svg>
             <a class="bento-link" href={site.links.appautomaton}>Explore App Automaton</a>
           </article>
 
@@ -56,7 +70,7 @@ import { ChartNoAxesCombined, ShieldCheck, Workflow } from "@lucide/astro";
             <h3>Workflows that ship.</h3>
             <p>
               Scientific and analytical workflows turned into systems people can actually run,
-              built for correctness and repeatability. One example is
+              built for correctness and repeatability. One example is{" "}
               <a href={site.links.mlxAtomistic}>mlx-atomistic</a>, an Apple-Silicon molecular
               dynamics and density functional theory runtime that runs on the Mac GPU.
             </p>
