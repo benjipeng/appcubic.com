@@ -271,7 +271,7 @@ h3 {
   align-items: center;
   gap: 9px;
   color: var(--ink);
-  font-size: 1.12rem;
+  font-size: 1.28rem;
   text-decoration: none;
   transition: opacity 150ms ease;
 }
@@ -306,13 +306,13 @@ h3 {
 .nav-link,
 .nav-cta {
   display: inline-flex;
-  min-height: 36px;
+  min-height: 38px;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  padding: 0 12px;
+  padding: 0 13px;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
