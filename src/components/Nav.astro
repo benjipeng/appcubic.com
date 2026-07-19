@@ -3,6 +3,13 @@ import { site } from "../data/site";
 import BrandMark from "./BrandMark.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
+interface Props {
+  /* pages that commit to a single palette (the observatory) hide the toggle */
+  hideTheme?: boolean;
+}
+
+const { hideTheme = false } = Astro.props;
+
 const links = [
   { href: "/", label: "Home" },
   { href: "/appautomaton/", label: "AppAutomaton" },
@@ -28,7 +35,7 @@ const links = [
       }
     </div>
     <div class="nav-actions">
-      <ThemeToggle />
+      {!hideTheme && <ThemeToggle />}
       <a class="nav-cta" href={site.links.benji}>Benji</a>
     </div>
   </nav>

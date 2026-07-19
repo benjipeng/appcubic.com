@@ -319,16 +319,22 @@ html[data-theme="dark"] .moon-icon {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -0.33em;
+  /* Boska's glyphs hang ~0.18em below the line box at line-height 0.82, so a
+     small positive bottom still leaves the baseline under the hero's hairline:
+     the revealed state slices the lower bowls. The at-rest state sinks a
+     further 0.2em via a scroll-driven translate (see index.astro) so the guard
+     covers ~half the caps until the visitor scrolls. */
+  bottom: 0.05em;
+  margin: 0; /* the UA h1 margin-bottom is 0.67em — a fifth of a viewport here */
   font-family: var(--font-display);
-  /* Boska is a narrow face — it needs more vw than the Didone did to fill the frame */
   font-weight: 340;
-  font-size: clamp(4.6rem, 21.5vw, 20rem);
+  font-size: clamp(6rem, 24vw, 23rem);
   line-height: 0.82;
   letter-spacing: -0.008em;
   white-space: nowrap;
   user-select: none;
   color: var(--ink);
+  will-change: translate;
 }
 
 .monument em {
@@ -359,6 +365,9 @@ html[data-theme="dark"] .moon-icon {
   font-size: 0.6rem;
   color: var(--muted);
   transition: opacity 600ms ease;
+  /* the oversized monument runs beneath it — stay legible on ink or paper */
+  mix-blend-mode: difference;
+  color: #8a8894;
 }
 
 /* ---------- statement ---------- */
@@ -657,6 +666,14 @@ html[data-theme="dark"] .moon-icon {
   /* Boska's strokes are sturdy enough to outline evenly at 1px */
   font-weight: 440;
   -webkit-text-stroke: 1px rgba(246, 244, 239, 0.42);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monument {
+    /* no drift, no reveal: keep the full word above the line */
+    bottom: 0.45em;
+    font-size: clamp(4.6rem, 21.5vw, 20rem);
+  }
 }
 
 /* ---------- reveal utility ---------- */

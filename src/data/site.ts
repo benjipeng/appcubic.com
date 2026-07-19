@@ -14,7 +14,7 @@ export const site = {
     appautomatonSite: "https://appautomaton.github.io",
     mlxAtomistic: "https://appautomaton.github.io/mlx-atomistic/",
     benji: "https://benji.appcubic.com",
-    github: "https://github.com/appautomaton",
+    github: "https://github.com/benjipeng/appcubic.com",
     research: "https://research.appcubic.com",
     futur: "https://futur.renocrypt.com",
   },

@@ -164,16 +164,43 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     reduced ? el.classList.add("in") : io.observe(el)
   );
 
-  /* marquee: time drift + scroll coupling */
+  /* marquee: time drift + scroll coupling; monuments: lateral scroll drift */
   const belt = document.getElementById("belt");
   const hint = document.getElementById("scroll-hint");
-  if (belt && !reduced) {
+  /* sink: extra em the monument sits below its resting spot at scroll 0 — the
+     hero hairline "guards" the caps, then slides down the glyphs as you scroll */
+  const mons = [
+    { el: document.querySelector<HTMLElement>(".hero .monument"), amp: -6, sink: 0.46, top: 0, h: 1 },
+    { el: document.querySelector<HTMLElement>(".coda .monument"), amp: 8, sink: 0, top: 0, h: 1 },
+  ].filter((m) => m.el);
+  const measure = () => {
+    mons.forEach((m) => {
+      const r = m.el!.getBoundingClientRect();
+      m.top = r.top + scrollY;
+      m.h = r.height;
+    });
+  };
+  if (!reduced) {
+    measure();
+    document.fonts.ready.then(measure);
+    addEventListener("resize", measure, { passive: true });
     const tick = (now: number) => {
-      const half = belt.scrollWidth / 2;
-      if (half > 0) {
-        const x = -((now * 0.04 + scrollY * 0.35) % half);
-        belt.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
+      if (belt) {
+        const half = belt.scrollWidth / 2;
+        if (half > 0) {
+          const x = -((now * 0.04 + scrollY * 0.35) % half);
+          belt.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
+        }
       }
+      const rev = Math.min(1, scrollY / (innerHeight * 0.6));
+      const reveal = 1 - Math.pow(1 - rev, 3);
+      mons.forEach((m) => {
+        const pr = (scrollY + innerHeight - m.top) / (innerHeight + m.h);
+        if (pr > -0.2 && pr < 1.2) {
+          const y = m.sink * (1 - reveal);
+          m.el!.style.translate = `${(pr * m.amp).toFixed(2)}vw ${y.toFixed(3)}em`;
+        }
+      });
       if (hint) hint.style.opacity = scrollY > 80 ? "0" : "1";
       requestAnimationFrame(tick);
     };

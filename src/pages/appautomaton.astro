@@ -1,23 +1,7 @@
 ---
-import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 import { site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {
-  Blocks,
-  Wrench,
-  Cpu,
-  FolderGit2,
-  Compass,
-  FileText,
-  Presentation,
-  Globe,
-  AudioLines,
-  Mic,
-  ScrollText,
-  Atom,
-  Container,
-} from "@lucide/astro";
 
 const title = "App Automaton | Open-source AI agent tooling by AppCubic";
 const description =
@@ -45,241 +29,827 @@ const structuredData = {
 
 <BaseLayout title={title} description={description} pathname="/appautomaton/">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(structuredData)} />
-  <Nav />
-  <main class="page-main">
-    <div class="page-shell">
-      <p class="section-label">Open source</p>
-      <h1 class="page-title">App Automaton, the studio's <em>open workshop</em>.</h1>
-      <p class="page-lede">
-        App Automaton is where AppCubic builds in public. It is a GitHub organization of MIT-licensed
-        tooling for AI coding agents, introduced at{" "}
-        <a href={siteUrl}>appautomaton.github.io</a> and developed at{" "}
-        <a href={org}>github.com/appautomaton</a>.
-      </p>
 
-      <div class="content">
-        <p>
-          The premise is simple. Coding agents like Claude Code, Codex, Gemini, and OpenCode are
-          capable, but they work best when you hand them clear workflows, honest constraints, and
-          good tools. App Automaton packages those things in forms you can clone, symlink, and use
-          the same day. Everything is plain text first, portable across agents, and shaped by daily
-          use inside the studio.
+  <div class="obs">
+    <canvas class="obs-sky" id="obs-sky" aria-hidden="true"></canvas>
+
+    <Nav hideTheme />
+
+    <div class="phase-dots" id="obs-dots" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <main class="obs-main">
+      <!-- arrival -->
+      <section class="arrival" data-reveal aria-labelledby="obs-title">
+        <p class="eyebrow">Open source — the studio's workshop</p>
+        <h1 class="obs-title" id="obs-title">
+          <span class="ln-mask"><span class="ln" style="--i:0">App Automaton,</span></span>
+          <span class="ln-mask"><span class="ln" style="--i:1">the studio's <em>open workshop</em>.</span></span>
+        </h1>
+        <p class="lede">
+          Where AppCubic builds in public: a GitHub organization of MIT-licensed tooling for AI
+          coding agents, introduced at <a href={siteUrl}>appautomaton.github.io</a> and developed
+          at <a href={org}>github.com/appautomaton</a>.
         </p>
+        <p class="down">Scroll — the cube comes apart</p>
+      </section>
 
-        <h2><span class="sec-ic"><Blocks size={20} stroke-width={1.8} /></span>Skills that teach agents workflows</h2>
-        <p>
-          The flagship is <a href={`${org}/agent-designer`}>agent-designer</a>, a portable skills
-          workspace with issue-driven planning and bridge scripts that let one agent consult another
-          without losing the session. It has its own{" "}
-          <a href="https://appautomaton.github.io/agent-designer/">deep-dive page</a>. Around it sit{" "}
-          <a href={`${org}/document-SKILLs`}>document-SKILLs</a> for Word, Excel, PowerPoint, and PDF
-          work, <a href={`${org}/presentation`}>presentation</a> for consulting-quality decks, and{" "}
-          <a href={`${org}/webmaton`}>webmaton</a> for web research with grounded citations. A newer
-          addition, <a href={`${org}/latex-arxiv-SKILL`}>latex-arxiv-SKILL</a>, turns a research
-          topic into an arXiv-ready review paper. It gates the outline for review, writes issue by
-          issue, and verifies every citation, with its own{" "}
-          <a href="https://appautomaton.github.io/latex-arxiv-SKILL/">project page</a>.
+      <!-- premise -->
+      <section class="premise" data-reveal aria-label="The premise">
+        <p class="premise-line">
+          <span class="ln-mask"><span class="ln" style="--i:0">Coding agents are capable. They do</span></span>
+          <span class="ln-mask"><span class="ln" style="--i:1">their best work when you hand them clear</span></span>
+          <span class="ln-mask"><span class="ln" style="--i:2">workflows, honest constraints, and <em>good tools</em>.</span></span>
         </p>
-
-        <h2><span class="sec-ic"><Wrench size={20} stroke-width={1.8} /></span>Harnesses that keep agents honest</h2>
-        <p>
-          <a href={`${org}/automaton`}>automaton</a> is a stage-gated harness that walks an agent
-          from framing through planning, review, execution, and verification, with durable state in
-          the repository. <a href={`${org}/automux`}>automux</a> orchestrates several agents at once
-          in tmux, each in its own git worktree, coordinating through files. Smaller tools handle the
-          sharp edges. <a href={`${org}/markmaton`}>markmaton</a> turns HTML into clean Markdown, and{" "}
-          <a href={`${org}/docker-for-apple-container`}>docker-for-apple-container</a> runs docker and
-          docker compose on Apple's native container CLI with no Docker Desktop, with its own{" "}
-          <a href="https://appautomaton.github.io/docker-for-apple-container/">project page</a>.
+        <p class="premise-sub rv" style="--d:3">
+          App Automaton packages those things in forms you can clone, symlink, and use the same
+          day — with Claude Code, Codex, Gemini, or OpenCode. Everything is plain text first,
+          portable across agents, and shaped by daily use inside the studio.
         </p>
+      </section>
 
-        <h2><span class="sec-ic"><Cpu size={20} stroke-width={1.8} /></span>Models that run on the laptop</h2>
-        <p>
-          A third shelf is pure MLX work for Apple Silicon, with no cloud and no PyTorch.{" "}
-          <a href={`${org}/mlx-speech`}>mlx-speech</a> covers speech synthesis, voice cloning, and
-          recognition. <a href={`${org}/tnt-asr`}>tnt-asr</a> is a terminal voice-to-text tool that
-          transcribes in about a second. <a href={`${org}/ltx-video-mlx`}>ltx-video-mlx</a> generates
-          video with synchronized audio on device. <a href={`${org}/mlx-spatial`}>mlx-spatial</a>{" "}
-          reconstructs 3D from images, turning photos into meshes, Gaussian splats, and point
-          clouds. <a href={`${org}/mlx-cv`}>mlx-cv</a> adds detection, segmentation, and
-          open-vocabulary grounding. The newest work,{" "}
-          <a href={`${org}/mlx-atomistic`}>mlx-atomistic</a>, takes MLX into science, running
-          molecular dynamics and density functional theory on the Apple GPU, with its own{" "}
-          <a href="https://appautomaton.github.io/mlx-atomistic/">documentation site</a>.
-        </p>
+      <!-- shelf 01: skills -->
+      <section class="chapter" data-tint="peri" data-reveal>
+        <span class="num" aria-hidden="true">SHELF 01</span>
+        <div class="body">
+          <p class="kicker rv" style="--d:0">Skills</p>
+          <h2 class="rv" style="--d:1">Skills that teach agents <em>workflows</em>.</h2>
+          <p class="rv" style="--d:2">
+            The flagship is <a href={`${org}/agent-designer`}>agent-designer</a>, a portable skills
+            workspace with issue-driven planning and bridge scripts that let one agent consult
+            another without losing the session. It has its own{" "}
+            <a href="https://appautomaton.github.io/agent-designer/">deep-dive page</a>. Around it
+            sit <a href={`${org}/document-SKILLs`}>document-SKILLs</a> for Word, Excel, PowerPoint,
+            and PDF work, <a href={`${org}/presentation`}>presentation</a> for consulting-quality
+            decks, and <a href={`${org}/webmaton`}>webmaton</a> for web research with grounded
+            citations. A newer addition, <a href={`${org}/latex-arxiv-SKILL`}>latex-arxiv-SKILL</a>,
+            turns a research topic into an arXiv-ready review paper — it gates the outline for
+            review, writes issue by issue, and verifies every citation, with its own{" "}
+            <a href="https://appautomaton.github.io/latex-arxiv-SKILL/">project page</a>.
+          </p>
+        </div>
+      </section>
 
-        <h2><span class="sec-ic"><FolderGit2 size={20} stroke-width={1.8} /></span>Repositories to start with</h2>
-        <ul class="repo-list">
-          <li>
-            <span class="repo-ic"><FileText size={18} stroke-width={1.8} /></span>
-            <div class="repo-body">
-              <a href={`${org}/document-SKILLs`}>appautomaton/document-SKILLs</a>
+      <!-- shelf 02: harnesses -->
+      <section class="chapter right" data-tint="blush" data-reveal>
+        <span class="num" aria-hidden="true">SHELF 02</span>
+        <div class="body">
+          <p class="kicker rv" style="--d:0">Harnesses</p>
+          <h2 class="rv" style="--d:1">Harnesses that keep agents <em>honest</em>.</h2>
+          <p class="rv" style="--d:2">
+            <a href={`${org}/automaton`}>automaton</a> is a stage-gated harness that walks an agent
+            from framing through planning, review, execution, and verification, with durable state
+            in the repository. <a href={`${org}/automux`}>automux</a> orchestrates several agents at
+            once in tmux, each in its own git worktree, coordinating through files. Smaller tools
+            handle the sharp edges: <a href={`${org}/markmaton`}>markmaton</a> turns HTML into clean
+            Markdown, and{" "}
+            <a href={`${org}/docker-for-apple-container`}>docker-for-apple-container</a> runs docker
+            and docker compose on Apple's native container CLI with no Docker Desktop, with its own{" "}
+            <a href="https://appautomaton.github.io/docker-for-apple-container/">project page</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- shelf 03: models -->
+      <section class="chapter" data-tint="gold" data-reveal>
+        <span class="num" aria-hidden="true">SHELF 03</span>
+        <div class="body">
+          <p class="kicker rv" style="--d:0">Models</p>
+          <h2 class="rv" style="--d:1">Models that run on <em>the laptop</em>.</h2>
+          <p class="rv" style="--d:2">
+            A third shelf is pure MLX work for Apple Silicon, with no cloud and no PyTorch.{" "}
+            <a href={`${org}/mlx-speech`}>mlx-speech</a> covers speech synthesis, voice cloning, and
+            recognition. <a href={`${org}/tnt-asr`}>tnt-asr</a> is a terminal voice-to-text tool
+            that transcribes in about a second. <a href={`${org}/ltx-video-mlx`}>ltx-video-mlx</a>{" "}
+            generates video with synchronized audio on device.{" "}
+            <a href={`${org}/mlx-spatial`}>mlx-spatial</a> reconstructs 3D from images, turning
+            photos into meshes, Gaussian splats, and point clouds.{" "}
+            <a href={`${org}/mlx-cv`}>mlx-cv</a> adds detection, segmentation, and open-vocabulary
+            grounding. The newest work, <a href={`${org}/mlx-atomistic`}>mlx-atomistic</a>, takes
+            MLX into science, running molecular dynamics and density functional theory on the Apple
+            GPU, with its own{" "}
+            <a href="https://appautomaton.github.io/mlx-atomistic/">documentation site</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- the inventory -->
+      <section class="inventory" data-reveal aria-labelledby="inv-title">
+        <p class="inv-label rv" style="--d:0" id="inv-title">The inventory — eight places to start</p>
+        <ul class="inv-list">
+          <li class="rv" data-tint="peri" style="--d:1">
+            <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+              <polyline pathLength="1" points="9,4 19,4 25,10 25,28 9,28 9,4" />
+              <polyline pathLength="1" points="19,4 19,10 25,10" />
+              <circle cx="9" cy="4" r="1.4" /><circle cx="25" cy="10" r="1.4" />
+              <circle cx="25" cy="28" r="1.4" /><circle cx="9" cy="28" r="1.4" />
+              <circle cx="19" cy="10" r="1.4" />
+            </svg>
+            <div class="inv-body">
+              <a class="inv-name" href={`${org}/document-SKILLs`}>appautomaton/document-SKILLs</a>
               <p>
                 Claude Code and Codex SKILLs for PDF, Excel, Word, and PowerPoint work: extraction,
                 forms, formulas, and tracked changes, adapted from Anthropic's skills.
               </p>
             </div>
           </li>
-          <li>
-            <span class="repo-ic"><Presentation size={18} stroke-width={1.8} /></span>
-            <div class="repo-body">
-              <a href={`${org}/presentation`}>appautomaton/presentation</a>
+          <li class="rv" data-tint="peri" style="--d:2">
+            <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+              <polyline pathLength="1" points="6,7 26,7 26,19 6,19 6,7" />
+              <polyline pathLength="1" points="16,7 16,4" />
+              <polyline pathLength="1" points="10,19 7,27" />
+              <polyline pathLength="1" points="22,19 25,27" />
+              <circle cx="6" cy="7" r="1.4" /><circle cx="26" cy="7" r="1.4" />
+              <circle cx="26" cy="19" r="1.4" /><circle cx="6" cy="19" r="1.4" />
+              <circle cx="16" cy="4" r="1.4" /><circle cx="7" cy="27" r="1.4" />
+              <circle cx="25" cy="27" r="1.4" />
+            </svg>
+            <div class="inv-body">
+              <a class="inv-name" href={`${org}/presentation`}>appautomaton/presentation</a>
               <p>
                 Claude Code and Codex SKILLs for consulting-quality decks: strategy storyboarding,
                 brand-system identity, and pixel-perfect PDF or editable PPTX output.
               </p>
             </div>
           </li>
-          <li>
-            <span class="repo-ic"><Globe size={18} stroke-width={1.8} /></span>
-            <div class="repo-body">
-              <a href={`${org}/webmaton`}>appautomaton/webmaton</a>
+          <li class="rv" data-tint="peri" style="--d:3">
+            <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+              <polyline pathLength="1" points="16,4 28,16 16,28 4,16 16,4" />
+              <polyline pathLength="1" points="16,4 16,28" />
+              <polyline pathLength="1" points="4,16 28,16" />
+              <circle cx="16" cy="4" r="1.4" /><circle cx="28" cy="16" r="1.4" />
+              <circle cx="16" cy="28" r="1.4" /><circle cx="4" cy="16" r="1.4" />
+              <circle cx="16" cy="16" r="1.4" />
+            </svg>
+            <div class="inv-body">
+              <a class="inv-name" href={`${org}/webmaton`}>appautomaton/webmaton</a>
               <p>
                 Portable web-research and browser-automation SKILLs for Claude Code, Codex, and
                 OpenCode: Playwright, Chrome DevTools, nodriver, and HTML to Markdown.
               </p>
             </div>
           </li>
-          <li>
-            <span class="repo-ic"><AudioLines size={18} stroke-width={1.8} /></span>
-            <div class="repo-body">
-              <a href={`${org}/mlx-speech`}>appautomaton/mlx-speech</a>
+          <li class="rv" data-tint="gold" style="--d:4">
+            <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+              <polyline pathLength="1" points="4,17 10,8 16,23 22,6 28,17" />
+              <circle cx="4" cy="17" r="1.4" /><circle cx="10" cy="8" r="1.4" />
+              <circle cx="16" cy="23" r="1.4" /><circle cx="22" cy="6" r="1.4" />
+              <circle cx="28" cy="17" r="1.4" />
+            </svg>
+            <div class="inv-body">
+              <a class="inv-name" href={`${org}/mlx-speech`}>appautomaton/mlx-speech</a>
               <p>
                 Pure-MLX speech synthesis, voice cloning, dialogue, sound effects, and ASR for Apple
                 Silicon: Fish S2 Pro, VibeVoice, LongCat, MOSS, Step-Audio, and Cohere ASR.
               </p>
-              <a class="repo-page" href="https://appautomaton.github.io/mlx-speech/">Project page →</a>
+              <a class="inv-page" href="https://appautomaton.github.io/mlx-speech/">Project page</a>
             </div>
           </li>
-          <li>
-            <span class="repo-ic"><Mic size={18} stroke-width={1.8} /></span>
-            <div class="repo-body">
-              <a href={`${org}/tnt-asr`}>appautomaton/tnt-asr</a>
+          <li class="rv" data-tint="gold" style="--d:5">
+            <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+              <polyline pathLength="1" points="13,5 19,5 19,15 13,15 13,5" />
+              <polyline pathLength="1" points="16,15 16,22" />
+              <polyline pathLength="1" points="11,26 21,26" />
+              <circle cx="13" cy="5" r="1.4" /><circle cx="19" cy="5" r="1.4" />
+              <circle cx="19" cy="15" r="1.4" /><circle cx="13" cy="15" r="1.4" />
+              <circle cx="11" cy="26" r="1.4" /><circle cx="21" cy="26" r="1.4" />
+            </svg>
+            <div class="inv-body">
+              <a class="inv-name" href={`${org}/tnt-asr`}>appautomaton/tnt-asr</a>
               <p>
                 A terminal voice-to-text TUI built on mlx-speech. Qwen3-ASR on the Apple GPU, fully
                 local, no PyTorch, transcribes in about a second.
               </p>
-              <a class="repo-page" href="https://appautomaton.github.io/tnt-asr/">Project page →</a>
+              <a class="inv-page" href="https://appautomaton.github.io/tnt-asr/">Project page</a>
             </div>
           </li>
-          <li>
-            <span class="repo-ic"><ScrollText size={18} stroke-width={1.8} /></span>
-            <div class="repo-body">
-              <a href={`${org}/latex-arxiv-SKILL`}>appautomaton/latex-arxiv-SKILL</a>
+          <li class="rv" data-tint="peri" style="--d:6">
+            <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+              <polyline pathLength="1" points="23,6 9,6 17,16 9,26 23,26" />
+              <circle cx="23" cy="6" r="1.4" /><circle cx="9" cy="6" r="1.4" />
+              <circle cx="17" cy="16" r="1.4" /><circle cx="9" cy="26" r="1.4" />
+              <circle cx="23" cy="26" r="1.4" />
+            </svg>
+            <div class="inv-body">
+              <a class="inv-name" href={`${org}/latex-arxiv-SKILL`}>appautomaton/latex-arxiv-SKILL</a>
               <p>
-                A portable Agent Skill for Claude Code and Codex that turns a topic into an arXiv-ready
-                review paper. Gated literature discovery, an issue-by-issue writing loop, verified
-                citations, and a two-column IEEEtran PDF.
+                A portable Agent Skill for Claude Code and Codex that turns a topic into an
+                arXiv-ready review paper. Gated literature discovery, an issue-by-issue writing
+                loop, verified citations, and a two-column IEEEtran PDF.
               </p>
-              <a class="repo-page" href="https://appautomaton.github.io/latex-arxiv-SKILL/">Project page →</a>
+              <a class="inv-page" href="https://appautomaton.github.io/latex-arxiv-SKILL/">Project page</a>
             </div>
           </li>
-          <li>
-            <span class="repo-ic"><Atom size={18} stroke-width={1.8} /></span>
-            <div class="repo-body">
-              <a href={`${org}/mlx-atomistic`}>appautomaton/mlx-atomistic</a>
+          <li class="rv" data-tint="gold" style="--d:7">
+            <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+              <polyline pathLength="1" points="16,4 5,26 27,26 16,4" />
+              <circle cx="16" cy="4" r="1.4" /><circle cx="5" cy="26" r="1.4" />
+              <circle cx="27" cy="26" r="1.4" /><circle cx="16" cy="19" r="2" />
+            </svg>
+            <div class="inv-body">
+              <a class="inv-name" href={`${org}/mlx-atomistic`}>appautomaton/mlx-atomistic</a>
               <p>
                 An Apple-Silicon molecular dynamics and density-functional-theory runtime on MLX and
                 Metal. It runs on the Mac GPU with no CUDA, server, or cloud.
               </p>
-              <a class="repo-page" href="https://appautomaton.github.io/mlx-atomistic/">Project page →</a>
+              <a class="inv-page" href="https://appautomaton.github.io/mlx-atomistic/">Project page</a>
             </div>
           </li>
-          <li>
-            <span class="repo-ic"><Container size={18} stroke-width={1.8} /></span>
-            <div class="repo-body">
-              <a href={`${org}/docker-for-apple-container`}>appautomaton/docker-for-apple-container</a>
+          <li class="rv" data-tint="blush" style="--d:8">
+            <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+              <polyline pathLength="1" points="16,3 27,9 27,21 16,27 5,21 5,9 16,3" />
+              <polyline pathLength="1" points="5,9 16,15 27,9" />
+              <polyline pathLength="1" points="16,15 16,27" />
+              <circle cx="16" cy="3" r="1.4" /><circle cx="27" cy="9" r="1.4" />
+              <circle cx="27" cy="21" r="1.4" /><circle cx="16" cy="27" r="1.4" />
+              <circle cx="5" cy="21" r="1.4" /><circle cx="5" cy="9" r="1.4" />
+              <circle cx="16" cy="15" r="1.4" />
+            </svg>
+            <div class="inv-body">
+              <a class="inv-name" href={`${org}/docker-for-apple-container`}>appautomaton/docker-for-apple-container</a>
               <p>
-                A stateless docker shim over Apple's native container CLI on macOS. It runs docker and
-                docker compose with no Docker Desktop.
+                A stateless docker shim over Apple's native container CLI on macOS. It runs docker
+                and docker compose with no Docker Desktop.
               </p>
-              <a class="repo-page" href="https://appautomaton.github.io/docker-for-apple-container/">Project page →</a>
+              <a class="inv-page" href="https://appautomaton.github.io/docker-for-apple-container/">Project page</a>
             </div>
           </li>
         </ul>
+      </section>
 
-        <h2><span class="sec-ic"><Compass size={20} stroke-width={1.8} /></span>Where to start</h2>
-        <p>
+      <!-- coda -->
+      <footer class="obs-coda" data-reveal>
+        <h2 class="rv" style="--d:0">Start with <em>agent-designer</em>, and work outward.</h2>
+        <p class="rv" style="--d:1">
           The <a href={siteUrl}>App Automaton site</a> gives the full tour, including the anatomy of
-          a skill and a three-command quickstart. If you would rather read code, start with{" "}
-          <a href={`${org}/agent-designer`}>agent-designer on GitHub</a> and work outward. Everything
-          is MIT licensed, and issues and pull requests are welcome across the{" "}
-          <a href={org}>organization</a>.
+          a skill and a three-command quickstart. Everything is MIT licensed, and issues and pull
+          requests are welcome across the <a href={org}>organization</a>.
         </p>
-      </div>
-    </div>
-  </main>
-  <Footer />
+        <div class="obs-links rv" style="--d:2">
+          <a href={siteUrl}>The full tour</a>
+          <a href={org}>GitHub organization</a>
+        </div>
+        <div class="obs-foot">
+          <span>©2026 AppCubic</span>
+          <nav aria-label="Footer navigation">
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href={site.links.github}>GitHub</a>
+            <a href={site.links.benji}>Benji</a>
+          </nav>
+        </div>
+      </footer>
+    </main>
+  </div>
 </BaseLayout>
 
-<style>
-  /* Section heading icons, echoing the homepage .principle-icon badge */
-  .content h2 {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+<style is:global>
+  /* the observatory has no daylight */
+  body:has(.obs) {
+    background: #0b0a10;
+    color-scheme: dark;
   }
-  .sec-ic {
-    display: inline-grid;
-    width: 36px;
-    height: 36px;
-    place-items: center;
-    flex-shrink: 0;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    color: var(--blue);
-    background: var(--nav-hover);
+</style>
+
+<style>
+  /* night tokens for everything inside the wing — Nav and focus states inherit */
+  .obs {
+    --paper: #0b0a10;
+    --ink: #e9e6f0;
+    --muted: #8b87a0;
+    --faint: #55516a;
+    --accent: #8f97e8;
+    --line: rgba(233, 230, 240, 0.12);
+    --line-strong: rgba(233, 230, 240, 0.34);
+    --hover-veil: rgba(233, 230, 240, 0.06);
+    --peri: #8f97e8;
+    --blush: #e2a8b8;
+    --gold: #d9bf85;
+
+    /* night cube for the brand mark */
+    --art-stroke: rgba(233, 230, 240, 0.65);
+    --peri-2: #a9aef7;
+    --blush-2: #d8a5b6;
+    --mint-2: #96c4ac;
+    --butter-2: #d9bf85;
+
+    background: var(--paper);
+    color: var(--ink);
   }
 
-  .repo-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.5em;
+  .obs-sky {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
   }
-  .repo-list li {
+
+  .obs-main {
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-dots {
+    position: fixed;
+    right: clamp(14px, 2.4vw, 36px);
+    top: 50%;
+    z-index: 30;
     display: flex;
+    flex-direction: column;
     gap: 14px;
-    align-items: flex-start;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--line);
+    transform: translateY(-50%);
   }
-  .repo-list li:first-child {
+
+  .phase-dots span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--faint);
+    transition: background 400ms ease, transform 400ms ease;
+  }
+
+  .phase-dots span.on {
+    background: var(--peri);
+    transform: scale(1.7);
+  }
+
+  /* ---------- arrival ---------- */
+  .arrival {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    text-align: center;
+    min-height: 100svh;
+    padding: 90px 24px 0;
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 30px;
+  }
+
+  .obs-title {
+    font-family: var(--font-display);
+    font-weight: 340;
+    font-size: clamp(2.7rem, 7.4vw, 6.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.006em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .obs-title em {
+    font-style: italic;
+    font-weight: 330;
+  }
+
+  .lede {
+    margin: 30px 0 0;
+    max-width: 36em;
+    color: var(--muted);
+    font-size: 1.04rem;
+  }
+
+  .lede a,
+  .chapter .body p a,
+  .obs-coda p a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 4px;
+    transition: color 250ms ease, text-decoration-color 250ms ease;
+  }
+
+  .down {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    translate: -50% 0;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  /* ---------- premise ---------- */
+  .premise {
+    padding: 24vh clamp(18px, 4vw, 64px);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .premise-line {
+    font-family: var(--font-display);
+    font-weight: 390;
+    font-size: clamp(1.6rem, 3.2vw, 2.9rem);
+    line-height: 1.32;
+    margin: 0;
+  }
+
+  .premise-line em {
+    font-style: italic;
+    color: var(--peri);
+  }
+
+  .premise-sub {
+    margin: 34px 0 0;
+    max-width: 42em;
+    color: var(--muted);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- chapters (shelves) ---------- */
+  .chapter {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 20px;
+    min-height: 82vh;
+    padding: 14vh clamp(18px, 4vw, 64px);
+  }
+
+  .chapter .num {
+    grid-column: 1 / span 1;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--faint);
+    writing-mode: vertical-rl;
+  }
+
+  .chapter .body {
+    grid-column: 3 / span 7;
+  }
+
+  .chapter.right .body {
+    grid-column: 6 / span 7;
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--tint, var(--peri));
+    margin: 0 0 20px;
+  }
+
+  .chapter h2 {
+    font-family: var(--font-display);
+    font-weight: 360;
+    font-size: clamp(2rem, 4.6vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.004em;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+
+  .chapter h2 em {
+    font-style: italic;
+    font-weight: 350;
+  }
+
+  .chapter .body > p:not(.kicker) {
+    color: var(--muted);
+    max-width: 38em;
+    font-size: 1.02rem;
+    margin: 0;
+  }
+
+  .chapter[data-tint="peri"] { --tint: var(--peri); }
+  .chapter[data-tint="blush"] { --tint: var(--blush); }
+  .chapter[data-tint="gold"] { --tint: var(--gold); }
+
+  .chapter .body p a:hover,
+  .lede a:hover,
+  .obs-coda p a:hover {
+    color: var(--tint, var(--peri));
+    text-decoration-color: var(--tint, var(--peri));
+  }
+
+  /* ---------- the inventory ---------- */
+  .inventory {
+    position: relative;
+    padding: 16vh clamp(18px, 4vw, 64px) 18vh;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(18, 16, 26, 0.88) 14%,
+      rgba(18, 16, 26, 0.88) 86%,
+      transparent
+    );
+  }
+
+  .inv-label {
+    max-width: 880px;
+    margin: 0 auto 40px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.62rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .inv-list {
+    list-style: none;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .inv-list li {
+    --tint: var(--peri);
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    padding: 30px 0;
     border-top: 1px solid var(--line);
   }
-  .repo-ic {
-    display: inline-grid;
-    width: 34px;
-    height: 34px;
-    place-items: center;
-    flex-shrink: 0;
-    margin-top: 2px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    color: var(--blue);
-    background: var(--nav-hover);
+
+  .inv-list li[data-tint="blush"] { --tint: var(--blush); }
+  .inv-list li[data-tint="gold"] { --tint: var(--gold); }
+
+  .inv-list li:last-child {
+    border-bottom: 1px solid var(--line);
   }
-  .repo-body {
+
+  .glyph {
+    width: 32px;
+    height: 32px;
+    margin-top: 4px;
+    overflow: visible;
+    color: var(--tint);
+  }
+
+  .glyph polyline {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--d, 0) * 120ms + 300ms);
+  }
+
+  .glyph circle {
+    fill: currentColor;
+    opacity: 0;
+    transition: opacity 900ms ease;
+    transition-delay: calc(var(--d, 0) * 120ms + 700ms);
+  }
+
+  [data-reveal].in .glyph polyline {
+    stroke-dashoffset: 0;
+  }
+
+  [data-reveal].in .glyph circle {
+    opacity: 0.9;
+  }
+
+  .inv-body {
     display: flex;
     flex-direction: column;
   }
-  .repo-list a {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-  .repo-list p {
-    margin: 6px 0 0;
-    font-size: 0.95rem;
-    color: var(--muted);
-  }
-  .repo-list .repo-page {
-    margin-top: 8px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--muted);
+
+  .inv-name {
     width: fit-content;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.88rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 250ms ease, border-color 250ms ease;
   }
-  .repo-list .repo-page:hover {
-    color: var(--blue);
+
+  .inv-name:hover {
+    color: var(--tint);
+    border-bottom-color: var(--tint);
+  }
+
+  .inv-body p {
+    margin: 8px 0 0;
+    max-width: 46em;
+    color: var(--muted);
+    font-size: 0.96rem;
+  }
+
+  .inv-page {
+    width: fit-content;
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 4px;
+    transition: color 250ms ease, border-color 250ms ease;
+  }
+
+  .inv-page:hover {
+    color: var(--tint);
+    border-color: var(--tint);
+  }
+
+  /* ---------- coda ---------- */
+  .obs-coda {
+    position: relative;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    text-align: center;
+    min-height: 92vh;
+    padding: 20vh 24px;
+  }
+
+  .obs-coda h2 {
+    font-family: var(--font-display);
+    font-weight: 350;
+    font-size: clamp(2rem, 4.6vw, 4.2rem);
+    line-height: 1.12;
+    max-width: 14em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .obs-coda h2 em {
+    font-style: italic;
+    font-weight: 340;
+  }
+
+  .obs-coda p {
+    margin: 26px 0 0;
+    max-width: 38em;
+    color: var(--muted);
+    font-size: 1.02rem;
+  }
+
+  .obs-links {
+    display: flex;
+    gap: 36px;
+    margin-top: 38px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .obs-links a {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.64rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 7px;
+    transition: color 300ms ease, border-color 300ms ease;
+  }
+
+  .obs-links a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .obs-foot {
+    position: absolute;
+    bottom: 24px;
+    left: clamp(18px, 3.4vw, 52px);
+    right: clamp(18px, 3.4vw, 52px);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .obs-foot nav {
+    display: flex;
+    gap: 24px;
+  }
+
+  .obs-foot a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 250ms ease;
+  }
+
+  .obs-foot a:hover {
+    color: var(--ink);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 820px) {
+    .chapter {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding: 12vh 24px;
+    }
+
+    .chapter .num {
+      display: none;
+    }
+
+    .chapter .body,
+    .chapter.right .body {
+      grid-column: 1;
+    }
+
+    .phase-dots {
+      display: none;
+    }
+
+    .premise {
+      padding: 16vh 24px;
+    }
+
+    .inv-list li {
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 14px;
+    }
+  }
+
+  /* ---------- reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .glyph polyline {
+      stroke-dashoffset: 0 !important;
+      transition: none !important;
+    }
+
+    .glyph circle {
+      opacity: 0.9 !important;
+      transition: none !important;
+    }
   }
 </style>
+
+<script>
+  import Lenis from "lenis";
+  import { mountObservatory } from "../scripts/observatory.js";
+
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* smooth scroll */
+  if (!reduced) {
+    const lenis = new Lenis({ lerp: 0.09 });
+    const raf = (t: number) => {
+      lenis.raf(t);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
+
+  /* reveals */
+  const io = new IntersectionObserver(
+    (es) => {
+      es.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+  document.querySelectorAll("[data-reveal]").forEach((el) =>
+    reduced ? el.classList.add("in") : io.observe(el)
+  );
+
+  /* the sky + phase dots */
+  const sky = document.getElementById("obs-sky") as HTMLCanvasElement | null;
+  const dots = document.getElementById("obs-dots");
+  if (sky) {
+    const spans = dots ? Array.from(dots.children) : [];
+    mountObservatory(sky, (p: number) => {
+      const ph = Math.min(spans.length - 1, Math.floor(p * spans.length));
+      spans.forEach((d, i) => d.classList.toggle("on", i === ph));
+    });
+  }
+</script>
