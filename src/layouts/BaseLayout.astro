@@ -65,15 +65,15 @@ const structuredData = [
         try {
           const urlTheme = new URLSearchParams(location.search).get("theme");
           const savedTheme = localStorage.getItem("theme");
-          document.documentElement.dataset.theme = urlTheme || savedTheme || "dark";
+          document.documentElement.dataset.theme = urlTheme || savedTheme || "light";
         } catch {
-          document.documentElement.dataset.theme = "dark";
+          document.documentElement.dataset.theme = "light";
         }
       })();
     </script>
-    <link rel="preload" href="/fonts/Zodiak-Variable.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Zodiak-VariableItalic.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Author-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Boska-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Boska-VariableItalic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GeneralSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />

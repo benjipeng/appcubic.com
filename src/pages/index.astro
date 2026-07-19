@@ -1,158 +1,207 @@
 ---
-import Footer from "../components/Footer.astro";
-import HeroArt from "../components/HeroArt.astro";
 import Nav from "../components/Nav.astro";
 import { site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { ChartNoAxesCombined, ShieldCheck, Workflow } from "@lucide/astro";
 ---
 
 <BaseLayout title={site.title} description={site.description} pathname="/">
   <Nav />
   <main>
+    <!-- The monument: type is the hero -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-content">
-        <div class="hero-text">
-          <p class="eyebrow">AppCubic · Applied AI studio · Building since 2019</p>
-          <h1 id="hero-title">AI systems that hold up <em>in real work</em>.</h1>
-          <p class="hero-copy">
-            Agent workflows, research tooling, and the products that grow out of them: built,
-            tested, and carried to production by a small studio that ships.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="/about/">Explore the studio</a>
-            <a class="button secondary" href={site.links.research}>Research systems</a>
-          </div>
+      <p class="hero-manifesto">
+        AppCubic is an applied AI studio. Since 2019 it has built agent workflows, research
+        tooling, and the products that grow out of them — carried all the way to production.
+      </p>
+      <div class="hero-index" aria-hidden="true">
+        APPLIED AI STUDIO<br />
+        EST. 2019<br />
+        SYSTEMS · RESEARCH · VENTURES
+      </div>
+      <h1 class="monument" id="hero-title">
+        <span class="word"><span class="ln" style="--i:0">Applied</span></span><span
+          class="word"><span class="ln" style="--i:1"><em>AI.</em></span></span>
+      </h1>
+      <p class="hero-foot" id="scroll-hint">Scroll to explore</p>
+    </section>
+
+    <!-- Statement -->
+    <section class="statement" data-reveal aria-label="Studio statement">
+      <p>
+        <span class="ln-mask"><span class="ln" style="--i:0">Prototypes are easy. We build the systems</span></span>
+        <span class="ln-mask"><span class="ln" style="--i:1">that survive contact with <em>real work</em> —</span></span>
+        <span class="ln-mask"><span class="ln" style="--i:2">and we carry them to production.</span></span>
+      </p>
+    </section>
+
+    <!-- The ledger -->
+    <div class="ledger" aria-label="What the studio builds">
+      <p class="ledger-label">The ledger — what the studio builds</p>
+
+      <a class="row" href={site.links.appautomaton}>
+        <div class="row-inner">
+          <h2>App Automaton</h2>
+          <span class="meta">Agentic systems — open source</span>
         </div>
-        <div class="hero-figure">
-          <HeroArt />
+        <p class="desc">
+          Portable skills for coding agents, multi-agent orchestration, and pure-MLX models
+          for Apple Silicon. MIT-licensed, in daily studio use.
+        </p>
+      </a>
+
+      <a class="row" href={site.links.research}>
+        <div class="row-inner">
+          <h2>Research Systems</h2>
+          <span class="meta">Science to product</span>
         </div>
+        <p class="desc">
+          Molecular dynamics and density functional theory on the Mac GPU — scientific
+          workflows turned into systems people can actually run.
+        </p>
+      </a>
+
+      <a class="row" href="/about/">
+        <div class="row-inner">
+          <h2>Venture Studio</h2>
+          <span class="meta">Diligence — incubation</span>
+        </div>
+        <p class="desc">
+          Early product strategy, technical diligence, grant support, and incubation for
+          AI-first products.
+        </p>
+      </a>
+    </div>
+
+    <!-- Marquee belt -->
+    <div class="belt" aria-hidden="true">
+      <div class="belt-track" id="belt">
+        <span>Built <b>in public</b></span><span>Shipped <b>to production</b></span><span>Reliable <b>by design</b></span><span>Since <b>2019</b></span><span>Built <b>in public</b></span><span>Shipped <b>to production</b></span><span>Reliable <b>by design</b></span><span>Since <b>2019</b></span>
+      </div>
+    </div>
+
+    <!-- Creed -->
+    <section class="creed" data-reveal aria-label="Operating principles">
+      <div class="creed-item">
+        <h3 class="rv" style="--d:0">Reliable by design.</h3>
+        <p class="rv" style="--d:1">
+          Agents earn trust through evaluation, careful retrieval, and explicit tool
+          boundaries. We engineer for behavior you can predict.
+        </p>
+      </div>
+      <div class="creed-item">
+        <h3 class="rv" style="--d:0">Whole systems, not demos.</h3>
+        <p class="rv" style="--d:1">
+          End-to-end workflows shaped by real operating constraints — not isolated prompt
+          experiments that break when conditions change.
+        </p>
+      </div>
+      <div class="creed-item">
+        <h3 class="rv" style="--d:0">Depth that compounds.</h3>
+        <p class="rv" style="--d:1">
+          Good data infrastructure, scientific rigor, and product judgment reinforce one
+          another.
+        </p>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="services-title">
-      <div class="section-shell">
-        <div class="section-header">
-          <p class="section-label">Focus areas</p>
-          <h2 id="services-title">What the studio <em>builds</em>.</h2>
-          <p>
-            The work sits where prototypes have to become dependable: agent workflows, technical
-            products, scientific tooling, and the operations around them.
-          </p>
-        </div>
-        <div class="bento">
-          <article class="bento-cell bento-feature">
-            <p class="bento-kicker">Agentic systems</p>
-            <h3>App Automaton, the studio's <em>open workshop</em>.</h3>
-            <p>
-              Portable skills for coding agents, document and web tooling, multi-agent
-              orchestration, and local models for Apple Silicon. Built in public, shaped by daily
-              use inside the studio.
-            </p>
-            <div class="bento-term" aria-hidden="true">
-              <span class="t-prompt">$</span>
-              <span class="t-cmd">gh repo clone appautomaton/agent-designer</span>
-              <span class="t-ok">✓ skills · bridges · issue-driven workflow</span>
-            </div>
-            <svg class="bento-cubes" viewBox="0 0 160 110" fill="none" aria-hidden="true">
-              <polygon class="c-a left" points="30.6,50 60,67 60,101 30.6,84"></polygon>
-              <polygon class="c-a right" points="89.4,50 60,67 60,101 89.4,84"></polygon>
-              <polygon class="c-a top" points="60,33 89.4,50 60,67 30.6,50"></polygon>
-              <polygon class="c-b left" points="104.4,40 120,49 120,67 104.4,58"></polygon>
-              <polygon class="c-b right" points="135.6,40 120,49 120,67 135.6,58"></polygon>
-              <polygon class="c-b top" points="120,31 135.6,40 120,49 104.4,40"></polygon>
-            </svg>
-            <a class="bento-link" href={site.links.appautomaton}>Explore App Automaton</a>
-          </article>
-
-          <article class="bento-cell bento-half">
-            <p class="bento-kicker">Research to product</p>
-            <h3>Workflows that ship.</h3>
-            <p>
-              Scientific and analytical workflows turned into systems people can actually run,
-              built for correctness and repeatability. One example is{" "}
-              <a href={site.links.mlxAtomistic}>mlx-atomistic</a>, an Apple-Silicon molecular
-              dynamics and density functional theory runtime that runs on the Mac GPU.
-            </p>
-            <a class="bento-link" href={site.links.research}>Research systems</a>
-          </article>
-
-          <article class="bento-cell bento-half">
-            <p class="bento-kicker">Venture &amp; advisory</p>
-            <h3>From diligence to incubation.</h3>
-            <p>
-              Early product strategy, technical diligence, grant support, and incubation for
-              AI-first products.
-            </p>
-            <a class="bento-link" href="/about/">About the studio</a>
-          </article>
-
-          <article class="bento-cell bento-wide">
-            <div>
-              <p class="bento-kicker">Open source</p>
-              <p>MIT-licensed tooling, public on GitHub and in daily use.</p>
-            </div>
-            <a class="bento-link" href={site.links.appautomatonOrg}>github.com/appautomaton</a>
-          </article>
-
-          <article class="bento-cell bento-half bento-stat">
-            <p class="bento-stat-num">2019</p>
-            <p class="bento-stat-lbl">Building since</p>
-          </article>
-        </div>
+    <!-- Coda: night sky, cube assembles, monument returns as outline -->
+    <footer class="coda" id="coda">
+      <canvas class="coda-sky" id="coda-sky" aria-hidden="true"></canvas>
+      <p class="coda-copy">
+        A small studio that ships. If the work above sounds like the work you need, the
+        door is open.
+        <a class="coda-cta" href="/about/">Visit the studio</a>
+      </p>
+      <nav class="coda-links" aria-label="Footer navigation">
+        <a href="/about/">About</a>
+        <a href="/appautomaton/">AppAutomaton</a>
+        <a href={site.links.github}>GitHub</a>
+        <a href={site.links.benji}>Benji</a>
+      </nav>
+      <div class="monument" aria-hidden="true"><span class="word">AppCubic</span></div>
+      <div class="coda-foot">
+        <span>©2026 AppCubic</span>
+        <span id="coda-clock"></span>
       </div>
-    </section>
-
-    <section class="section alt" aria-labelledby="principles-title">
-      <div class="section-shell">
-        <div class="section-header centered">
-          <p class="section-label">Operating principles</p>
-          <h2 id="principles-title">How we <em>work</em>.</h2>
-          <p>
-            AppCubic is a small AI engineering studio. We build, test, and carry agentic systems
-            toward production with teams who know their domain deeply.
-          </p>
-        </div>
-        <div class="proof-grid">
-          <article class="principle">
-            <div class="principle-kicker">
-              <span class="principle-icon">
-                <ShieldCheck size={20} stroke-width={1.8} />
-              </span>
-            </div>
-            <h3>Reliable by design</h3>
-            <p>
-              Agents earn trust through evaluation, careful retrieval, and explicit tool
-              boundaries. We engineer for behavior you can predict.
-            </p>
-          </article>
-          <article class="principle">
-            <div class="principle-kicker">
-              <span class="principle-icon">
-                <Workflow size={20} stroke-width={1.8} />
-              </span>
-            </div>
-            <h3>Whole systems, not demos</h3>
-            <p>
-              We build end-to-end workflows shaped by real operating constraints, not isolated
-              prompt experiments that break the first time conditions change.
-            </p>
-          </article>
-          <article class="principle">
-            <div class="principle-kicker">
-              <span class="principle-icon">
-                <ChartNoAxesCombined size={20} stroke-width={1.8} />
-              </span>
-            </div>
-            <h3>Depth that compounds</h3>
-            <p>
-              Technical depth speeds up learning. Good data infrastructure, scientific rigor, and
-              product judgment reinforce one another.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+    </footer>
   </main>
-  <Footer />
 </BaseLayout>
+
+<script>
+  import Lenis from "lenis";
+  import { mountConstellation } from "../scripts/constellation.js";
+
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* smooth scroll */
+  if (!reduced) {
+    const lenis = new Lenis({ lerp: 0.09 });
+    const raf = (t: number) => {
+      lenis.raf(t);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
+
+  /* load: monument rises */
+  requestAnimationFrame(() =>
+    requestAnimationFrame(() => document.body.classList.add("loaded"))
+  );
+
+  /* reveals */
+  const io = new IntersectionObserver(
+    (es) => {
+      es.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+  document.querySelectorAll("[data-reveal]").forEach((el) =>
+    reduced ? el.classList.add("in") : io.observe(el)
+  );
+
+  /* marquee: time drift + scroll coupling */
+  const belt = document.getElementById("belt");
+  const hint = document.getElementById("scroll-hint");
+  if (belt && !reduced) {
+    const tick = (now: number) => {
+      const half = belt.scrollWidth / 2;
+      if (half > 0) {
+        const x = -((now * 0.04 + scrollY * 0.35) % half);
+        belt.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
+      }
+      if (hint) hint.style.opacity = scrollY > 80 ? "0" : "1";
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  /* coda constellation */
+  const sky = document.getElementById("coda-sky") as HTMLCanvasElement | null;
+  const coda = document.getElementById("coda");
+  if (sky && coda) mountConstellation(sky, coda);
+
+  /* coda clock */
+  const clock = document.getElementById("coda-clock");
+  if (clock) {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const tick = () => {
+      const d = new Date();
+      const f = (z: string) =>
+        d.toLocaleTimeString("en-US", {
+          timeZone: z,
+          hour12: false,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+      clock.textContent = `${f(tz)} local · ${f("UTC")} UTC`;
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+</script>

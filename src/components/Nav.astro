@@ -103,10 +103,16 @@ const links = [
 
 <script>
   const brand = document.querySelector(".brand");
-  if (brand) {
+  const header = document.querySelector(".site-header");
+  if (brand && header) {
     let ticking = false;
+    let lastY = window.scrollY;
     const update = () => {
-      brand.classList.toggle("folded", window.scrollY > 70);
+      const y = window.scrollY;
+      brand.classList.toggle("folded", y > 70);
+      // retreat when scrolling down past the hero; return on any upward scroll
+      header.classList.toggle("retreat", y > lastY && y > innerHeight * 0.6);
+      lastY = y;
       ticking = false;
     };
     window.addEventListener("scroll", () => {
