@@ -1,8 +1,8 @@
 /* The observatory sky: a fixed canvas behind the whole workshop page.
    Three star layers scroll at different speeds (true parallax), two nebulae
    drift, and the brand cube — assembled on arrival — comes apart as you
-   scroll through the shelves, then reassembles at the coda. Its wire color
-   passes through each shelf's tint on the way down: peri → blush → champagne. */
+   scroll through the shelves, then reassembles at the coda. Monochrome bone
+   wire on neutral night — no color anywhere. */
 
 const VERTS = [];
 for (let i = 0; i < 8; i++) VERTS.push([i & 1 ? 1 : -1, i & 2 ? 1 : -1, i & 4 ? 1 : -1]);
@@ -29,12 +29,8 @@ const smooth = (a, b, v) => {
   const t = clamp01((v - a) / (b - a));
   return t * t * (3 - 2 * t);
 };
-const mix = (a, b, t) => a.map((c, i) => Math.round(lerp(c, b[i], t)));
 
-const PERI = [143, 151, 232];
-const BLUSH = [226, 168, 184];
-const GOLD = [217, 191, 133];
-const BONE = [233, 230, 240];
+const BONE = [237, 237, 237];
 
 export function mountObservatory(canvas, onProgress) {
   const ctx = canvas.getContext("2d");
@@ -64,17 +60,17 @@ export function mountObservatory(canvas, onProgress) {
     const p = clamp01(scrollY / Math.max(1, doc.scrollHeight - h));
     ctx.clearRect(0, 0, w, h);
 
-    /* nebulae drift against the scroll */
+    /* nebulae drift against the scroll — two depths of bone haze */
     const g1x = w * (0.78 - p * 0.3);
     const g1 = ctx.createRadialGradient(g1x, h * 0.28, 0, g1x, h * 0.28, w * 0.5);
-    g1.addColorStop(0, "rgba(143, 151, 232, 0.09)");
+    g1.addColorStop(0, "rgba(237, 237, 237, 0.055)");
     g1.addColorStop(1, "transparent");
     ctx.fillStyle = g1;
     ctx.fillRect(0, 0, w, h);
     const g2x = w * (0.18 + p * 0.3);
     const g2y = h * (0.8 - p * 0.35);
     const g2 = ctx.createRadialGradient(g2x, g2y, 0, g2x, g2y, w * 0.42);
-    g2.addColorStop(0, "rgba(226, 168, 184, 0.06)");
+    g2.addColorStop(0, "rgba(237, 237, 237, 0.04)");
     g2.addColorStop(1, "transparent");
     ctx.fillStyle = g2;
     ctx.fillRect(0, 0, w, h);
@@ -87,7 +83,7 @@ export function mountObservatory(canvas, onProgress) {
         const y = ((sy - (scrollY * speed) / h) % 1 + 1) % 1;
         const tw = reduced ? 0.5 : 0.5 + 0.5 * Math.sin(t * 0.0011 + i * 1.7 + li * 9);
         ctx.globalAlpha = base * (0.35 + 0.65 * tw);
-        ctx.fillStyle = "rgba(233, 230, 240, 1)";
+        ctx.fillStyle = "rgba(237, 237, 237, 1)";
         ctx.fillRect(sx * w, y * h, size, size);
       }
     });
@@ -119,8 +115,7 @@ export function mountObservatory(canvas, onProgress) {
       return [cx + x1 * scale * d, cyc + y2 * scale * d, z2];
     });
 
-    /* wire color rides the shelf tints */
-    const col = mix(mix(PERI, BLUSH, smooth(0.22, 0.5, p)), GOLD, smooth(0.5, 0.85, p));
+    const col = BONE;
     EDGES.forEach(([a, b], i) => {
       const dr = clamp01(asm * 6 - i * 0.42);
       if (dr <= 0) return;

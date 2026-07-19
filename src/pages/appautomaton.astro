@@ -33,7 +33,7 @@ const structuredData = {
   <div class="obs">
     <canvas class="obs-sky" id="obs-sky" aria-hidden="true"></canvas>
 
-    <Nav hideTheme />
+    <Nav />
 
     <div class="phase-dots" id="obs-dots" aria-hidden="true">
       <span></span><span></span><span></span><span></span><span></span>
@@ -70,7 +70,7 @@ const structuredData = {
       </section>
 
       <!-- shelf 01: skills -->
-      <section class="chapter" data-tint="peri" data-reveal>
+      <section class="chapter" data-reveal>
         <span class="num" aria-hidden="true">SHELF 01</span>
         <div class="body">
           <p class="kicker rv" style="--d:0">Skills</p>
@@ -92,7 +92,7 @@ const structuredData = {
       </section>
 
       <!-- shelf 02: harnesses -->
-      <section class="chapter right" data-tint="blush" data-reveal>
+      <section class="chapter right" data-reveal>
         <span class="num" aria-hidden="true">SHELF 02</span>
         <div class="body">
           <p class="kicker rv" style="--d:0">Harnesses</p>
@@ -112,7 +112,7 @@ const structuredData = {
       </section>
 
       <!-- shelf 03: models -->
-      <section class="chapter" data-tint="gold" data-reveal>
+      <section class="chapter" data-reveal>
         <span class="num" aria-hidden="true">SHELF 03</span>
         <div class="body">
           <p class="kicker rv" style="--d:0">Models</p>
@@ -138,7 +138,7 @@ const structuredData = {
       <section class="inventory" data-reveal aria-labelledby="inv-title">
         <p class="inv-label rv" style="--d:0" id="inv-title">The inventory — eight places to start</p>
         <ul class="inv-list">
-          <li class="rv" data-tint="peri" style="--d:1">
+          <li class="rv" style="--d:1">
             <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
               <polyline pathLength="1" points="9,4 19,4 25,10 25,28 9,28 9,4" />
               <polyline pathLength="1" points="19,4 19,10 25,10" />
@@ -154,7 +154,7 @@ const structuredData = {
               </p>
             </div>
           </li>
-          <li class="rv" data-tint="peri" style="--d:2">
+          <li class="rv" style="--d:2">
             <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
               <polyline pathLength="1" points="6,7 26,7 26,19 6,19 6,7" />
               <polyline pathLength="1" points="16,7 16,4" />
@@ -173,7 +173,7 @@ const structuredData = {
               </p>
             </div>
           </li>
-          <li class="rv" data-tint="peri" style="--d:3">
+          <li class="rv" style="--d:3">
             <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
               <polyline pathLength="1" points="16,4 28,16 16,28 4,16 16,4" />
               <polyline pathLength="1" points="16,4 16,28" />
@@ -190,7 +190,7 @@ const structuredData = {
               </p>
             </div>
           </li>
-          <li class="rv" data-tint="gold" style="--d:4">
+          <li class="rv" style="--d:4">
             <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
               <polyline pathLength="1" points="4,17 10,8 16,23 22,6 28,17" />
               <circle cx="4" cy="17" r="1.4" /><circle cx="10" cy="8" r="1.4" />
@@ -206,7 +206,7 @@ const structuredData = {
               <a class="inv-page" href="https://appautomaton.github.io/mlx-speech/">Project page</a>
             </div>
           </li>
-          <li class="rv" data-tint="gold" style="--d:5">
+          <li class="rv" style="--d:5">
             <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
               <polyline pathLength="1" points="13,5 19,5 19,15 13,15 13,5" />
               <polyline pathLength="1" points="16,15 16,22" />
@@ -224,7 +224,7 @@ const structuredData = {
               <a class="inv-page" href="https://appautomaton.github.io/tnt-asr/">Project page</a>
             </div>
           </li>
-          <li class="rv" data-tint="peri" style="--d:6">
+          <li class="rv" style="--d:6">
             <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
               <polyline pathLength="1" points="23,6 9,6 17,16 9,26 23,26" />
               <circle cx="23" cy="6" r="1.4" /><circle cx="9" cy="6" r="1.4" />
@@ -241,7 +241,7 @@ const structuredData = {
               <a class="inv-page" href="https://appautomaton.github.io/latex-arxiv-SKILL/">Project page</a>
             </div>
           </li>
-          <li class="rv" data-tint="gold" style="--d:7">
+          <li class="rv" style="--d:7">
             <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
               <polyline pathLength="1" points="16,4 5,26 27,26 16,4" />
               <circle cx="16" cy="4" r="1.4" /><circle cx="5" cy="26" r="1.4" />
@@ -256,7 +256,7 @@ const structuredData = {
               <a class="inv-page" href="https://appautomaton.github.io/mlx-atomistic/">Project page</a>
             </div>
           </li>
-          <li class="rv" data-tint="blush" style="--d:8">
+          <li class="rv" style="--d:8">
             <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
               <polyline pathLength="1" points="16,3 27,9 27,21 16,27 5,21 5,9 16,3" />
               <polyline pathLength="1" points="5,9 16,15 27,9" />
@@ -307,28 +307,27 @@ const structuredData = {
 <style is:global>
   /* the observatory has no daylight */
   body:has(.obs) {
-    background: #0b0a10;
+    background: #0e0e0e;
     color-scheme: dark;
   }
 </style>
 
 <style>
-  /* night tokens for everything inside the wing — Nav and focus states inherit */
+  /* night tokens for everything inside the wing — Nav and focus states inherit.
+     Pure grayscale: emphasis is typographic (weight, italic), never a hue.
+     The animated brand-mark cube is the one colored thing. */
   .obs {
-    --paper: #0b0a10;
-    --ink: #e9e6f0;
-    --muted: #8b87a0;
-    --faint: #55516a;
-    --accent: #8f97e8;
-    --line: rgba(233, 230, 240, 0.12);
-    --line-strong: rgba(233, 230, 240, 0.34);
-    --hover-veil: rgba(233, 230, 240, 0.06);
-    --peri: #8f97e8;
-    --blush: #e2a8b8;
-    --gold: #d9bf85;
+    --paper: #0e0e0e;
+    --ink: #ededed;
+    --muted: #979797;
+    --faint: #5a5a5a;
+    --accent: #ededed;
+    --line: rgba(237, 237, 237, 0.12);
+    --line-strong: rgba(237, 237, 237, 0.34);
+    --hover-veil: rgba(237, 237, 237, 0.06);
 
     /* night cube for the brand mark */
-    --art-stroke: rgba(233, 230, 240, 0.65);
+    --art-stroke: rgba(237, 237, 237, 0.65);
     --peri-2: #a9aef7;
     --blush-2: #d8a5b6;
     --mint-2: #96c4ac;
@@ -372,7 +371,7 @@ const structuredData = {
   }
 
   .phase-dots span.on {
-    background: var(--peri);
+    background: var(--ink);
     transform: scale(1.7);
   }
 
@@ -460,8 +459,8 @@ const structuredData = {
   }
 
   .premise-line em {
+    /* emphasis by voice, not hue */
     font-style: italic;
-    color: var(--peri);
   }
 
   .premise-sub {
@@ -501,11 +500,12 @@ const structuredData = {
 
   .kicker {
     font-family: var(--font-mono);
-    font-weight: 500;
+    /* weight does the pointing that color used to */
+    font-weight: 700;
     font-size: 0.6rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--tint, var(--peri));
+    color: var(--ink);
     margin: 0 0 20px;
   }
 
@@ -531,15 +531,10 @@ const structuredData = {
     margin: 0;
   }
 
-  .chapter[data-tint="peri"] { --tint: var(--peri); }
-  .chapter[data-tint="blush"] { --tint: var(--blush); }
-  .chapter[data-tint="gold"] { --tint: var(--gold); }
-
   .chapter .body p a:hover,
   .lede a:hover,
   .obs-coda p a:hover {
-    color: var(--tint, var(--peri));
-    text-decoration-color: var(--tint, var(--peri));
+    text-decoration-color: var(--ink);
   }
 
   /* ---------- the inventory ---------- */
@@ -549,8 +544,8 @@ const structuredData = {
     background: linear-gradient(
       180deg,
       transparent,
-      rgba(18, 16, 26, 0.88) 14%,
-      rgba(18, 16, 26, 0.88) 86%,
+      rgba(17, 17, 17, 0.88) 14%,
+      rgba(17, 17, 17, 0.88) 86%,
       transparent
     );
   }
@@ -574,7 +569,6 @@ const structuredData = {
   }
 
   .inv-list li {
-    --tint: var(--peri);
     display: grid;
     grid-template-columns: 44px minmax(0, 1fr);
     gap: 20px;
@@ -582,9 +576,6 @@ const structuredData = {
     padding: 30px 0;
     border-top: 1px solid var(--line);
   }
-
-  .inv-list li[data-tint="blush"] { --tint: var(--blush); }
-  .inv-list li[data-tint="gold"] { --tint: var(--gold); }
 
   .inv-list li:last-child {
     border-bottom: 1px solid var(--line);
@@ -595,7 +586,12 @@ const structuredData = {
     height: 32px;
     margin-top: 4px;
     overflow: visible;
-    color: var(--tint);
+    color: var(--muted);
+    transition: color 300ms ease;
+  }
+
+  .inv-list li:hover .glyph {
+    color: var(--ink);
   }
 
   .glyph polyline {
@@ -643,8 +639,7 @@ const structuredData = {
   }
 
   .inv-name:hover {
-    color: var(--tint);
-    border-bottom-color: var(--tint);
+    border-bottom-color: var(--ink);
   }
 
   .inv-body p {
@@ -670,8 +665,8 @@ const structuredData = {
   }
 
   .inv-page:hover {
-    color: var(--tint);
-    border-color: var(--tint);
+    color: var(--ink);
+    border-color: var(--ink);
   }
 
   /* ---------- coda ---------- */
@@ -729,8 +724,7 @@ const structuredData = {
   }
 
   .obs-links a:hover {
-    color: var(--gold);
-    border-color: var(--gold);
+    border-color: var(--ink);
   }
 
   .obs-foot {

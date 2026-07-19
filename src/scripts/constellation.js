@@ -31,10 +31,8 @@ const lerp = (a, b, t) => a + (b - a) * t;
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
 const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
-const PERI = [143, 151, 232];
-const BUTTER = [229, 205, 143];
-const BONE = [246, 244, 239];
-const mix = (a, b, t) => a.map((c, i) => Math.round(lerp(c, b[i], t)));
+/* monochrome sky: bone shards on neutral night — no color anywhere */
+const BONE = [242, 242, 242];
 
 export function mountConstellation(canvas, section) {
   const ctx = canvas.getContext("2d");
@@ -59,12 +57,12 @@ export function mountConstellation(canvas, section) {
 
     // nebulae
     const g1 = ctx.createRadialGradient(w * 0.72, h * 0.3, 0, w * 0.72, h * 0.3, w * 0.45);
-    g1.addColorStop(0, "rgba(143,151,232,0.10)");
+    g1.addColorStop(0, "rgba(242,242,242,0.06)");
     g1.addColorStop(1, "transparent");
     ctx.fillStyle = g1;
     ctx.fillRect(0, 0, w, h);
     const g2 = ctx.createRadialGradient(w * 0.2, h * 0.72, 0, w * 0.2, h * 0.72, w * 0.4);
-    g2.addColorStop(0, "rgba(226,168,184,0.06)");
+    g2.addColorStop(0, "rgba(242,242,242,0.04)");
     g2.addColorStop(1, "transparent");
     ctx.fillStyle = g2;
     ctx.fillRect(0, 0, w, h);
@@ -75,7 +73,7 @@ export function mountConstellation(canvas, section) {
       const sy = ((Math.sin(i * 12.9898) * 24634.6345) % 1 + 1) % 1;
       const tw = reduced ? 0.5 : 0.5 + 0.5 * Math.sin(t * 0.0011 + i * 1.7);
       ctx.globalAlpha = 0.1 + 0.28 * tw;
-      ctx.fillStyle = "rgba(246,244,239,0.6)";
+      ctx.fillStyle = "rgba(242,242,242,0.6)";
       ctx.fillRect(sx * w, sy * h, 1.3, 1.3);
     }
     ctx.globalAlpha = 1;
@@ -101,7 +99,7 @@ export function mountConstellation(canvas, section) {
       return [cx + x1 * scale * d, cyc + y2 * scale * d, z2];
     });
 
-    const col = mix(PERI, BUTTER, clamp01(asm * 1.4 - 0.5));
+    const col = BONE;
     EDGES.forEach(([a, b], i) => {
       const dr = clamp01(asm * 12 - i * 0.55);
       if (dr <= 0) return;

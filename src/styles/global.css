@@ -30,31 +30,33 @@
   font-display: swap;
 }
 
-/* Type as Monument: paper, ink, one violet accent. Boska carries the display —
-   sharp glyphic serifs with moderate contrast, so its thin strokes stay visible
-   at every size (unlike a Didone, whose hairlines die below ~100px). */
+/* Type as Monument: pure grayscale — the type is the voice and emphasis is
+   typographic (italic, weight), never a hue. Boska carries the display —
+   sharp glyphic serifs with moderate contrast, so its thin strokes stay
+   visible at every size (unlike a Didone, whose hairlines die below ~100px).
+   The only color left anywhere is the animated brand-mark cube. */
 :root {
   color-scheme: light;
   --font-display: "Boska", Palatino, Georgia, serif;
   --font-body: "General Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
 
-  --paper: #F6F4EF;
-  --ink: #131217;
-  --muted: #716D7A;
-  --accent: #5A5FCF;
-  --line: rgba(19, 18, 23, 0.14);
-  --line-strong: rgba(19, 18, 23, 0.5);
-  --hover-veil: rgba(19, 18, 23, 0.05);
+  --paper: #F5F5F5;
+  --ink: #131313;
+  --muted: #757575;
+  --accent: #131313; /* emphasis is italic ink, not a hue */
+  --line: rgba(19, 19, 19, 0.14);
+  --line-strong: rgba(19, 19, 19, 0.5);
+  --hover-veil: rgba(19, 19, 19, 0.05);
 
   /* the coda is always night — constellation needs a sky */
-  --night: #0E0D13;
-  --night-ink: #F6F4EF;
-  --night-muted: rgba(246, 244, 239, 0.62);
-  --night-line: rgba(246, 244, 239, 0.28);
+  --night: #0E0E0E;
+  --night-ink: #F2F2F2;
+  --night-muted: rgba(242, 242, 242, 0.62);
+  --night-line: rgba(242, 242, 242, 0.28);
 
   /* brand-mark cube: wireframe stroke + lid rotation (consumed by cube3d.js) */
-  --art-stroke: rgba(19, 18, 23, 0.6);
+  --art-stroke: rgba(19, 19, 19, 0.6);
   --peri-2: #8F97E8;
   --blush-2: #E2A8B8;
   --mint-2: #9CCCB2;
@@ -63,17 +65,16 @@
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #131217;
-  --ink: #F0EEE8;
-  --muted: #928E9E;
-  /* night is ink, bone, and champagne — matching the constellation's gold */
-  --accent: #D9BF85;
-  --line: rgba(240, 238, 232, 0.14);
-  --line-strong: rgba(240, 238, 232, 0.45);
-  --hover-veil: rgba(240, 238, 232, 0.06);
+  --paper: #131313;
+  --ink: #EDEDED;
+  --muted: #979797;
+  --accent: #EDEDED; /* emphasis is italic ink, not a hue */
+  --line: rgba(237, 237, 237, 0.14);
+  --line-strong: rgba(237, 237, 237, 0.45);
+  --hover-veil: rgba(237, 237, 237, 0.06);
 
-  /* night cube: bone wireframe, champagne-led lids */
-  --art-stroke: rgba(240, 238, 232, 0.65);
+  /* night cube: bone wireframe (the lid pastels are the one colored thing) */
+  --art-stroke: rgba(237, 237, 237, 0.65);
   --peri-2: #A9AEF7;
   --blush-2: #D8A5B6;
   --mint-2: #96C4AC;
@@ -367,7 +368,7 @@ html[data-theme="dark"] .moon-icon {
   transition: opacity 600ms ease;
   /* the oversized monument runs beneath it — stay legible on ink or paper */
   mix-blend-mode: difference;
-  color: #8a8894;
+  color: #8a8a8a;
 }
 
 /* ---------- statement ---------- */
@@ -616,8 +617,8 @@ html[data-theme="dark"] .moon-icon {
 }
 
 .coda-copy .coda-cta:hover {
-  color: #D9BF85;
-  border-color: #D9BF85;
+  color: var(--night-ink);
+  border-color: var(--night-ink);
 }
 
 .coda-links {
@@ -656,7 +657,7 @@ html[data-theme="dark"] .moon-icon {
   font-size: 0.58rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(246, 244, 239, 0.4);
+  color: rgba(242, 242, 242, 0.4);
 }
 
 .coda .monument {
@@ -665,7 +666,7 @@ html[data-theme="dark"] .moon-icon {
   color: transparent;
   /* Boska's strokes are sturdy enough to outline evenly at 1px */
   font-weight: 440;
-  -webkit-text-stroke: 1px rgba(246, 244, 239, 0.42);
+  -webkit-text-stroke: 1px rgba(242, 242, 242, 0.42);
 }
 
 @media (prefers-reduced-motion: reduce) {
