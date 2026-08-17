@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://appcubic.com",
+  site: "https://www.appcubic.com",
   output: "static",
   integrations: [
     sitemap({

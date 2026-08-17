@@ -1,6 +1,6 @@
 export const site = {
   name: "AppCubic",
-  url: "https://appcubic.com",
+  url: "https://www.appcubic.com",
   title: "AppCubic | Applied AI Venture Studio",
   description:
     "AppCubic is an applied AI venture studio. It builds agentic systems, turns research into working products, and advises technical teams.",
@@ -11,8 +11,8 @@ export const site = {
   links: {
     appautomaton: "/appautomaton/",
     appautomatonOrg: "https://github.com/appautomaton",
-    appautomatonSite: "https://appautomaton.github.io",
-    mlxAtomistic: "https://appautomaton.github.io/mlx-atomistic/",
+    appautomatonSite: "https://appautomaton.renocrypt.com",
+    mlxAtomistic: "https://appautomaton.renocrypt.com/mlx-atomistic/",
     benji: "https://benji.appcubic.com",
     github: "https://github.com/benjipeng/appcubic.com",
     research: "https://research.appcubic.com",

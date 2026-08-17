@@ -12,17 +12,17 @@ AppCubic is an applied AI venture studio, building since 2019. The work sits whe
 
 ## App Automaton, the open-source workshop
 
-App Automaton is the studio's open-source GitHub organization. Overview at https://appcubic.com/appautomaton/ and https://appautomaton.github.io.
+App Automaton is the studio's open-source GitHub organization. Overview at https://www.appcubic.com/appautomaton/ and https://appautomaton.renocrypt.com.
 
-- [latex-arxiv-SKILL](https://appautomaton.github.io/latex-arxiv-SKILL/): a portable Agent Skill that turns a topic into an arXiv-ready ML review paper, gated and verified citation by citation.
-- [mlx-atomistic](https://appautomaton.github.io/mlx-atomistic/): an Apple-Silicon molecular dynamics and density-functional-theory runtime on MLX and Metal, with no CUDA, server, or cloud.
-- [docker-for-apple-container](https://appautomaton.github.io/docker-for-apple-container/): a stateless docker shim over Apple's native container CLI on macOS, with no Docker Desktop.
-- [agent-designer](https://appautomaton.github.io/agent-designer/): the skills workspace, with issue-driven workflows and bridge scripts for agent-to-agent delegation.
+- [latex-arxiv-SKILL](https://appautomaton.renocrypt.com/latex-arxiv-SKILL/): a portable Agent Skill that turns a topic into an arXiv-ready ML review paper, gated and verified citation by citation.
+- [mlx-atomistic](https://appautomaton.renocrypt.com/mlx-atomistic/): an Apple-Silicon molecular dynamics and density-functional-theory runtime on MLX and Metal, with no CUDA, server, or cloud.
+- [docker-for-apple-container](https://appautomaton.renocrypt.com/docker-for-apple-container/): a stateless docker shim over Apple's native container CLI on macOS, with no Docker Desktop.
+- [agent-designer](https://appautomaton.renocrypt.com/agent-designer/): the skills workspace, with issue-driven workflows and bridge scripts for agent-to-agent delegation.
 - More across the organization: https://github.com/appautomaton
 
 ## Links
 
-- [About](https://appcubic.com/about/): the studio and how it works.
+- [About](https://www.appcubic.com/about/): the studio and how it works.
 - [Research](https://research.appcubic.com): research systems.
 - [GitHub](https://github.com/appautomaton): open-source work.
 - [Benji Peng](https://benji.renocrypt.com): founder.
