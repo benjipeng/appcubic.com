@@ -18,7 +18,7 @@ const structuredData = {
   url: siteUrl,
   description:
     "An open-source workshop for engineering with coding agents. Portable SKILLs, stage-gated runtimes, and pure-MLX work for Apple Silicon.",
-  sameAs: [org],
+  sameAs: [org, "https://huggingface.co/appautomaton"],
   parentOrganization: {
     "@type": "Organization",
     name: site.name,
@@ -48,7 +48,7 @@ const structuredData = {
           <span class="ln-mask"><span class="ln" style="--i:1">the studio's <em>open workshop</em>.</span></span>
         </h1>
         <p class="lede">
-          Where AppCubic builds in public: a GitHub organization of MIT-licensed tooling for AI
+          Where AppCubic builds in public: a GitHub organization of open-source tooling for AI
           coding agents, introduced at <a href={siteUrl}>appautomaton.renocrypt.com</a> and developed
           at <a href={org}>github.com/appautomaton</a>.
         </p>
@@ -80,8 +80,8 @@ const structuredData = {
             workspace with issue-driven planning and bridge scripts that let one agent consult
             another without losing the session. It has its own{" "}
             <a href="https://appautomaton.renocrypt.com/agent-designer/">deep-dive page</a>. Around it
-            sit <a href={`${org}/document-SKILLs`}>document-SKILLs</a> for Word, Excel, PowerPoint,
-            and PDF work, <a href={`${org}/presentation`}>presentation</a> for consulting-quality
+            sit <a href="https://appautomaton.renocrypt.com/document-SKILLs/">document-SKILLs</a> for Word, Excel, PowerPoint,
+            and PDF work, <a href="https://appautomaton.renocrypt.com/presentation/">presentation</a> for consulting-quality
             decks, and <a href={`${org}/webmaton`}>webmaton</a> for web research with grounded
             citations. A newer addition, <a href={`${org}/latex-arxiv-SKILL`}>latex-arxiv-SKILL</a>,
             turns a research topic into an arXiv-ready review paper — it gates the outline for
@@ -100,8 +100,7 @@ const structuredData = {
           <p class="rv" style="--d:2">
             <a href={`${org}/automaton`}>automaton</a> is a stage-gated harness that walks an agent
             from framing through planning, review, execution, and verification, with durable state
-            in the repository. <a href={`${org}/automux`}>automux</a> orchestrates several agents at
-            once in tmux, each in its own git worktree, coordinating through files. Smaller tools
+            in the repository. Smaller tools
             handle the sharp edges: <a href={`${org}/markmaton`}>markmaton</a> turns HTML into clean
             Markdown, and{" "}
             <a href={`${org}/docker-for-apple-container`}>docker-for-apple-container</a> runs docker
@@ -282,9 +281,9 @@ const structuredData = {
       <footer class="obs-coda" data-reveal>
         <h2 class="rv" style="--d:0">Start with <em>agent-designer</em>, and work outward.</h2>
         <p class="rv" style="--d:1">
-          The <a href={siteUrl}>App Automaton site</a> gives the full tour, including the anatomy of
-          a skill and a three-command quickstart. Everything is MIT licensed, and issues and pull
-          requests are welcome across the <a href={org}>organization</a>.
+          The <a href={siteUrl}>App Automaton catalog</a> links to project pages and source
+          repositories. Start with each project's documentation for setup, examples, and license
+          terms. Issues and pull requests are welcome across the <a href={org}>organization</a>.
         </p>
         <div class="obs-links rv" style="--d:2">
           <a href={siteUrl}>The full tour</a>
