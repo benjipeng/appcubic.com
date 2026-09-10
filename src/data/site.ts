@@ -11,8 +11,8 @@ export const site = {
   links: {
     appautomaton: "/appautomaton/",
     appautomatonOrg: "https://github.com/appautomaton",
-    appautomatonSite: "https://appautomaton.renocrypt.com",
-    mlxAtomistic: "https://appautomaton.renocrypt.com/mlx-atomistic/",
+    appautomatonSite: "https://appautomaton.com",
+    mlxAtomistic: "https://appautomaton.com/mlx-atomistic/",
     benji: "https://benji.appcubic.com",
     github: "https://github.com/benjipeng/appcubic.com",
     research: "https://research.appcubic.com",
