@@ -1,0 +1,176 @@
+{
+  "organization": "appautomaton",
+  "url": "https://appautomaton.com/",
+  "projects": [
+    {
+      "repo": "agent-designer",
+      "description": "The skills workspace. Issue-driven workflows, an MCP tool catalog, and bridge skills for agent-to-agent delegation with session continuity.",
+      "source": "https://github.com/appautomaton/agent-designer",
+      "site": "https://appautomaton.com/agent-designer/",
+      "group": "skills",
+      "groupName": "Agent skills"
+    },
+    {
+      "repo": "document-SKILLs",
+      "description": "docx, xlsx, pptx, and pdf. Extraction, forms, formulas, and tracked changes. Runs on uv with PEP 723, no virtualenv.",
+      "source": "https://github.com/appautomaton/document-SKILLs",
+      "site": "https://appautomaton.com/document-SKILLs/",
+      "group": "skills",
+      "groupName": "Agent skills"
+    },
+    {
+      "repo": "presentation",
+      "description": "Consulting-quality decks, from strategy storyboarding to pixel-perfect PDF or editable PPTX.",
+      "source": "https://github.com/appautomaton/presentation",
+      "site": "https://appautomaton.com/presentation/",
+      "group": "skills",
+      "groupName": "Agent skills"
+    },
+    {
+      "repo": "webmaton",
+      "description": "Grounded web research. Citations, deterministic HTML-to-Markdown, and persistent sessions over Playwright, nodriver, and Chrome DevTools.",
+      "source": "https://github.com/appautomaton/webmaton",
+      "group": "skills",
+      "groupName": "Agent skills"
+    },
+    {
+      "repo": "playwright-skill",
+      "description": "Browser automation that also runs on Android via a Termux launcher patch and headless Chromium.",
+      "source": "https://github.com/appautomaton/playwright-skill",
+      "group": "skills",
+      "groupName": "Agent skills"
+    },
+    {
+      "repo": "latex-arxiv-SKILL",
+      "description": "Turns a topic into an arXiv-ready ML review paper. Gated literature discovery, every citation verified, compiled to a two-column IEEEtran PDF.",
+      "source": "https://github.com/appautomaton/latex-arxiv-SKILL",
+      "site": "https://appautomaton.com/latex-arxiv-SKILL/",
+      "group": "skills",
+      "groupName": "Agent skills"
+    },
+    {
+      "repo": "plexmaton",
+      "description": "AI coding in your terminal, with model and skill choice, tool review, and resumable conversations.",
+      "source": "https://github.com/appautomaton/plexmaton",
+      "group": "harnesses",
+      "groupName": "Working systems"
+    },
+    {
+      "repo": "automaton",
+      "description": "A stage-gated harness. Frame, plan, review, execute, verify, resume. Installs as plain markdown.",
+      "source": "https://github.com/appautomaton/automaton",
+      "site": "https://appautomaton.com/automaton/",
+      "group": "harnesses",
+      "groupName": "Working systems"
+    },
+    {
+      "repo": "openclaw-monorepo",
+      "description": "A repo-local OpenClaw workspace with JSON5 config, plugins, and Docker sandboxes.",
+      "source": "https://github.com/appautomaton/openclaw-monorepo",
+      "group": "harnesses",
+      "groupName": "Working systems"
+    },
+    {
+      "repo": "markmaton",
+      "description": "HTML to Markdown for agent pipelines. A Go parser core wrapped in a Python CLI and API, on PyPI.",
+      "source": "https://github.com/appautomaton/markmaton",
+      "site": "https://appautomaton.com/markmaton/",
+      "group": "harnesses",
+      "groupName": "Working systems"
+    },
+    {
+      "repo": "docker-for-apple-container",
+      "description": "A stateless docker shim over Apple’s native container CLI on macOS, with no Docker Desktop.",
+      "source": "https://github.com/appautomaton/docker-for-apple-container",
+      "site": "https://appautomaton.com/docker-for-apple-container/",
+      "group": "harnesses",
+      "groupName": "Working systems"
+    },
+    {
+      "repo": "pi-arcweld",
+      "description": "A curated local layer welded to pinned upstream Pi. Extensions, system guidance, and MCP tooling join along one auditable seam, over a reproducible runtime.",
+      "source": "https://github.com/appautomaton/pi-arcweld",
+      "site": "https://appautomaton.com/pi-arcweld/",
+      "group": "harnesses",
+      "groupName": "Working systems"
+    },
+    {
+      "repo": "mlx-speech",
+      "description": "Speech synthesis, voice cloning, dialogue, sound effects, and recognition, MLX-native on the Apple GPU.",
+      "source": "https://github.com/appautomaton/mlx-speech",
+      "site": "https://appautomaton.com/mlx-speech/",
+      "group": "mlx",
+      "groupName": "Local intelligence"
+    },
+    {
+      "repo": "tnt-asr",
+      "description": "A terminal voice-to-text TUI. Qwen3-ASR transcribes in about a second, fully local.",
+      "source": "https://github.com/appautomaton/tnt-asr",
+      "site": "https://appautomaton.com/tnt-asr/",
+      "group": "mlx",
+      "groupName": "Local intelligence"
+    },
+    {
+      "repo": "ltx-video-mlx",
+      "description": "Text- and image-to-video with synchronized audio on LTX-2.3 22B. On-device LoRA fine-tuning.",
+      "source": "https://github.com/appautomaton/ltx-video-mlx",
+      "group": "mlx",
+      "groupName": "Local intelligence"
+    },
+    {
+      "repo": "mlx-cv",
+      "description": "Open-vocabulary grounding, detection, depth and camera geometry, segmentation, and video tracking in pure MLX. Every model is checked against its upstream reference before it ships.",
+      "source": "https://github.com/appautomaton/mlx-cv",
+      "site": "https://appautomaton.com/mlx-cv/",
+      "group": "mlx",
+      "groupName": "Local intelligence"
+    },
+    {
+      "repo": "mlx-spatial",
+      "description": "3D and spatial inference on device with SAM 3D Objects, TRELLIS.2, WorldMirror, and MapAnything.",
+      "source": "https://github.com/appautomaton/mlx-spatial",
+      "site": "https://appautomaton.com/mlx-spatial/",
+      "group": "mlx",
+      "groupName": "Local intelligence"
+    },
+    {
+      "repo": "mlx-atomistic",
+      "description": "Atomistic simulation on Apple silicon. A DFT and molecular-dynamics runtime on MLX and Metal, running on the GPU the Mac already has.",
+      "source": "https://github.com/appautomaton/mlx-atomistic",
+      "site": "https://appautomaton.com/mlx-atomistic/",
+      "group": "mlx",
+      "groupName": "Local intelligence"
+    },
+    {
+      "repo": "mlx-minimax-music3",
+      "description": "MiniMax Music 3 in pure MLX. Lyrics and a structured caption to 44.1 kHz stereo, with phase-scoped model residency and no PyTorch at runtime.",
+      "source": "https://github.com/appautomaton/mlx-minimax-music3",
+      "site": "https://appautomaton.com/mlx-minimax-music3/",
+      "group": "mlx",
+      "groupName": "Local intelligence"
+    },
+    {
+      "repo": "mlx-h3",
+      "description": "MiniMax-H3 text to video and stereo audio, denoised together in one packed sequence. Phase-scoped model residency, no PyTorch at runtime.",
+      "source": "https://github.com/appautomaton/mlx-h3",
+      "site": "https://appautomaton.com/mlx-h3/",
+      "group": "mlx",
+      "groupName": "Local intelligence"
+    },
+    {
+      "repo": "mlx-timesfm",
+      "description": "TimesFM 3.0 time-series forecasting on Apple silicon, with univariate and multivariate forecasts in pure MLX. Model weights have separate usage terms.",
+      "source": "https://github.com/appautomaton/mlx-timesfm",
+      "group": "mlx",
+      "groupName": "Local intelligence"
+    },
+    {
+      "repo": "setloom",
+      "description": "Producer-first co-production for club music. Musical intent into editable tracks, stems, renders, and listening notes, with the human keeping the taste gate.",
+      "source": "https://github.com/appautomaton/setloom",
+      "site": "https://appautomaton.com/setloom/",
+      "group": "creative",
+      "groupName": "Creative practice"
+    }
+  ]
+}

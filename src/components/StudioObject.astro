@@ -1,0 +1,33 @@
+---
+import poster from '../assets/art/continuum-720.webp';
+import small from '../assets/art/continuum-360.webp';
+import day from '../assets/art/continuum-day.mp4';
+import night from '../assets/art/continuum-night.mp4';
+const { eager = false, class: className = '' } = Astro.props;
+---
+
+<div class:list={['studio-object', className]} data-kinetic aria-hidden="true">
+  <img
+    src={poster.src}
+    srcset={`${small.src} 360w, ${poster.src} 720w`}
+    sizes="(max-width:759px) 61vw, 51vw"
+    width="720"
+    height="720"
+    alt=""
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+  />
+  <video
+    muted
+    loop
+    playsinline
+    preload="none"
+    width="720"
+    height="720"
+    data-day={day}
+    data-night={night}
+    tabindex="-1"
+    disablepictureinpicture
+    disableremoteplayback
+  ></video>
+</div>

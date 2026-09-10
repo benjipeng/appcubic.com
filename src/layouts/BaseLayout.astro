@@ -1,102 +1,145 @@
 ---
-import GoogleAnalytics from "../components/GoogleAnalytics.astro";
-import { site } from "../data/site";
-import "../styles/global.css";
-
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import { site } from '../data/site';
+import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
   pathname?: string;
   image?: string;
-  type?: "website" | "article";
+  type?: 'website' | 'article';
   noindex?: boolean;
 }
-
 const {
   title = site.title,
   description = site.description,
   pathname = Astro.url.pathname,
   image = site.ogImage,
-  type = "website",
+  type = 'website',
   noindex = false,
 } = Astro.props;
-
-const canonicalUrl = new URL(pathname, site.url).toString();
-const imageUrl = new URL(image, site.url).toString();
-const pageTitle = title === site.name ? site.title : title;
-const structuredData = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: site.name,
-    url: site.url,
-    description: site.description,
-    sameAs: [site.links.github],
-    subOrganization: {
-      "@type": "Organization",
-      name: "App Automaton",
-      url: site.links.appautomatonSite,
-      sameAs: [site.links.appautomatonOrg],
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: site.name,
-    url: site.url,
-    publisher: {
-      "@type": "Organization",
+const canonical = new URL(pathname, site.url).href;
+const imageUrl = new URL(image, site.url).href;
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': site.url + '/#organization',
       name: site.name,
+      url: site.url + '/',
+      description: site.description,
+      logo: site.url + '/favicon.svg',
+      subOrganization: {
+        '@type': 'Organization',
+        '@id': 'https://appautomaton.com/#org',
+        name: 'App Automaton',
+        url: site.links.appautomatonSite,
+        sameAs: [site.links.appautomatonOrg],
+      },
     },
-  },
-];
+    {
+      '@type': 'WebSite',
+      '@id': site.url + '/#website',
+      name: site.name,
+      url: site.url + '/',
+      publisher: { '@id': site.url + '/#organization' },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': canonical + '#page',
+      url: canonical,
+      name: title,
+      description,
+      isPartOf: { '@id': site.url + '/#website' },
+      about: { '@id': site.url + '/#organization' },
+    },
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
     <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'}
+    />
+    <meta name="theme-color" content="#f5f5f5" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link
+      rel="preload"
+      href="/fonts/Boska-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/GeneralSans-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AppCubic. Intelligence, put to work." />
+    <meta property="og:locale" content={site.locale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content="AppCubic. Intelligence, put to work." />
     <script is:inline>
       (() => {
+        const r = document.documentElement;
         try {
-          const urlTheme = new URLSearchParams(location.search).get("theme");
-          const savedTheme = localStorage.getItem("theme");
-          document.documentElement.dataset.theme = urlTheme || savedTheme || "light";
+          const q = new URLSearchParams(location.search).get('theme'),
+            s = localStorage.getItem('theme');
+          r.dataset.theme = ['light', 'dark'].includes(q)
+            ? q
+            : ['light', 'dark'].includes(s)
+              ? s
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+          r.dataset.motion =
+            localStorage.getItem('appcubic-motion') === 'off' ||
+            matchMedia('(prefers-reduced-motion: reduce)').matches
+              ? 'off'
+              : 'on';
         } catch {
-          document.documentElement.dataset.theme = "light";
+          r.dataset.motion = 'off';
         }
       })();
     </script>
-    <link rel="preload" href="/fonts/Boska-Variable.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Boska-VariableItalic.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/GeneralSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    {noindex && <meta name="robots" content="noindex,nofollow" />}
-
-    <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content={type} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={imageUrl} />
-    <meta property="og:locale" content={site.locale} />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={imageUrl} />
-
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(graph).replaceAll('<', '\\u003c')}
+    ></script>
     <GoogleAnalytics measurementId={site.gaMeasurementId} />
     <slot name="head" />
   </head>
   <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
     <slot />
+    <script>
+      import '../scripts/site.js';
+    </script>
   </body>
 </html>

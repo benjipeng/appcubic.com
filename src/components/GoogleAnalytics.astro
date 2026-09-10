@@ -2,22 +2,64 @@
 interface Props {
   measurementId?: string;
 }
-
 const { measurementId } = Astro.props;
 ---
 
-{
-  measurementId && (
-    <>
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />
-      <script define:vars={{ measurementId }}>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-        gtag("config", measurementId);
-      </script>
-    </>
-  )
-}
+{measurementId && <script define:vars={{ measurementId }}>
+  // Development and preview clicks never enter production reporting.
+  if (['www.appcubic.com', 'appcubic.com'].includes(location.hostname)) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag =
+      window.gtag ||
+      function () {
+        window.dataLayer.push(arguments);
+      };
+    window.gtag('js', new Date());
+    window.gtag('config', measurementId);
+    let started = false;
+    const startAnalytics = () => {
+      if (started) return;
+      started = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src =
+        'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+      document.head.appendChild(script);
+    };
+    // A named studio event also measures sibling subdomains, independently of
+    // enhanced measurement's cross-domain exclusions. Native navigation is kept.
+    const track = (event) => {
+      if (event.defaultPrevented || (event.type === 'auxclick' && event.button !== 1)) return;
+      const anchor = event.target instanceof Element ? event.target.closest('a[href]') : null;
+      if (!anchor) return;
+      let url;
+      try {
+        url = new URL(anchor.href);
+      } catch {
+        return;
+      }
+      if (url.protocol !== 'https:' || url.hostname === location.hostname) return;
+      const section = anchor.closest('header,footer,section');
+      window.gtag('event', 'studio_link', {
+        link_url: url.origin + url.pathname,
+        link_domain: url.hostname,
+        link_text: (anchor.getAttribute('aria-label') || anchor.textContent || '')
+          .replace(/\s+/g, ' ')
+          .trim()
+          .slice(0, 100),
+        link_placement: section?.id || section?.classList[0] || 'page',
+        outbound: true,
+      });
+      startAnalytics();
+    };
+    document.addEventListener('click', track);
+    document.addEventListener('auxclick', track);
+    const ready = () => {
+      'requestIdleCallback' in window
+        ? requestIdleCallback(startAnalytics, { timeout: 2500 })
+        : setTimeout(startAnalytics, 800);
+    };
+    if (document.readyState === 'complete') ready();
+    else addEventListener('load', ready, { once: true });
+  }
+</script>}

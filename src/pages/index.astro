@@ -1,234 +1,249 @@
 ---
-import Nav from "../components/Nav.astro";
-import { site } from "../data/site";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import StudioObject from '../components/StudioObject.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import room from '../assets/art/open-assembly.webp';
+import researchArt from '../assets/art/discrete-matter.webp';
+import creativeArt from '../assets/art/signal-weave.webp';
+import { site } from '../data/site';
+import { project, projectCount } from '../data/workshop';
+const atomistic = project('mlx-atomistic');
+const setloom = project('setloom');
 ---
 
-<BaseLayout title={site.title} description={site.description} pathname="/">
+<BaseLayout>
   <Nav />
-  <main>
-    <!-- The monument: type is the hero -->
-    <section class="hero" aria-labelledby="hero-title">
-      <p class="hero-manifesto">
-        AppCubic is an applied AI studio. Since 2019 it has built agent workflows, research
-        tooling, and the products that grow out of them — carried all the way to production.
-      </p>
-      <div class="hero-index" aria-hidden="true">
-        APPLIED AI STUDIO<br />
-        EST. 2019<br />
-        SYSTEMS · RESEARCH · VENTURES
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title" data-hero>
+      <div class="hero-topline">
+        <span class="eyebrow">Independent applied AI studio</span>
+        <span class="eyebrow">Established 2019</span>
       </div>
-      <h1 class="monument" id="hero-title">
-        <span class="word"><span class="ln" style="--i:0">Applied</span></span><span
-          class="word"><span class="ln" style="--i:1"><em>AI.</em></span></span>
-      </h1>
-      <p class="hero-foot" id="scroll-hint">Scroll to explore</p>
-    </section>
-
-    <!-- Statement -->
-    <section class="statement" data-reveal aria-label="Studio statement">
-      <p>
-        <span class="ln-mask"><span class="ln" style="--i:0">Prototypes are easy. We build the systems</span></span>
-        <span class="ln-mask"><span class="ln" style="--i:1">that survive contact with <em>real work</em> —</span></span>
-        <span class="ln-mask"><span class="ln" style="--i:2">and we carry them to production.</span></span>
-      </p>
-    </section>
-
-    <!-- The ledger -->
-    <div class="ledger" aria-label="What the studio builds">
-      <p class="ledger-label">The ledger — what the studio builds</p>
-
-      <a class="row" href={site.links.appautomaton}>
-        <div class="row-inner">
-          <h2>App Automaton</h2>
-          <span class="meta">Agentic systems — open source</span>
-        </div>
-        <p class="desc">
-          Portable skills for coding agents, multi-agent orchestration, and pure-MLX models
-          for Apple Silicon. MIT-licensed, in daily studio use.
+      <div class="hero-copy">
+        <h1 id="hero-title">
+          Intelligence,
+          <br />
+          put to <em>work.</em>
+        </h1>
+        <p>
+          We turn ideas into working systems.
+          <br />
+          Agent workflows, research tools, and products
+          <br class="desktop-break" /> built with care for the people using them.
         </p>
-      </a>
-
-      <a class="row" href={site.links.research}>
-        <div class="row-inner">
-          <h2>Research Systems</h2>
-          <span class="meta">Science to product</span>
-        </div>
-        <p class="desc">
-          Molecular dynamics and density functional theory on the Mac GPU — scientific
-          workflows turned into systems people can actually run.
-        </p>
-      </a>
-
-      <a class="row" href="/about/">
-        <div class="row-inner">
-          <h2>Venture Studio</h2>
-          <span class="meta">Diligence — incubation</span>
-        </div>
-        <p class="desc">
-          Early product strategy, technical diligence, grant support, and incubation for
-          AI-first products.
-        </p>
-      </a>
-    </div>
-
-    <!-- Marquee belt -->
-    <div class="belt" aria-hidden="true">
-      <div class="belt-track" id="belt">
-        <span>Built <b>in public</b></span><span>Shipped <b>to production</b></span><span>Reliable <b>by design</b></span><span>Since <b>2019</b></span><span>Built <b>in public</b></span><span>Shipped <b>to production</b></span><span>Reliable <b>by design</b></span><span>Since <b>2019</b></span>
+        <a class="text-action" href="#work">
+          Explore the work <span aria-hidden="true">↘</span>
+        </a>
       </div>
-    </div>
-
-    <!-- Creed -->
-    <section class="creed" data-reveal aria-label="Operating principles">
-      <div class="creed-item">
-        <h3 class="rv" style="--d:0">Reliable by design.</h3>
-        <p class="rv" style="--d:1">
-          Agents earn trust through evaluation, careful retrieval, and explicit tool
-          boundaries. We engineer for behavior you can predict.
-        </p>
+      <StudioObject eager class="hero-object" />
+      <div class="hero-monument" aria-hidden="true">
+        <span>AppCubic.</span>
       </div>
-      <div class="creed-item">
-        <h3 class="rv" style="--d:0">Whole systems, not demos.</h3>
-        <p class="rv" style="--d:1">
-          End-to-end workflows shaped by real operating constraints — not isolated prompt
-          experiments that break when conditions change.
-        </p>
-      </div>
-      <div class="creed-item">
-        <h3 class="rv" style="--d:0">Depth that compounds.</h3>
-        <p class="rv" style="--d:1">
-          Good data infrastructure, scientific rigor, and product judgment reinforce one
-          another.
-        </p>
+      <div class="hero-baseline" aria-hidden="true">
+        <span></span>
       </div>
     </section>
-
-    <!-- Coda: night sky, cube assembles, monument returns as outline -->
-    <footer class="coda" id="coda">
-      <canvas class="coda-sky" id="coda-sky" aria-hidden="true"></canvas>
-      <p class="coda-copy">
-        A small studio that ships. If the work above sounds like the work you need, the
-        door is open.
-        <a class="coda-cta" href="/about/">Visit the studio</a>
-      </p>
-      <nav class="coda-links" aria-label="Footer navigation">
-        <a href="/about/">About</a>
-        <a href="/appautomaton/">AppAutomaton</a>
-        <a href={site.links.github}>GitHub</a>
-        <a href={site.links.benji}>Benji</a>
-      </nav>
-      <div class="monument" aria-hidden="true"><span class="word">AppCubic</span></div>
-      <div class="coda-foot">
-        <span>©2026 AppCubic</span>
-        <span id="coda-clock"></span>
+    <div class="hero-hold" aria-hidden="true"></div>
+    <section class="feature-track" id="work" aria-labelledby="workshop-title">
+      <div class="feature-stage" data-dark-scene>
+        <div class="feature-window">
+          <img
+            class="feature-image"
+            src={room.src}
+            width="1100"
+            height="1100"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="feature-shade"></div>
+        </div>
+        <div class="feature-top">
+          <span class="eyebrow">Selected work / 01</span>
+          <span class="case-pill">App Automaton</span>
+        </div>
+        <div class="feature-copy">
+          <h2 id="workshop-title">
+            A useful idea.
+            <br />
+            An open <em>possibility.</em>
+          </h2>
+          <p>
+            Our public workshop brings together tools for coding agents, local intelligence, and
+            creative work. Each project offers a practical way to carry an idea further.
+          </p>
+          <a class="pill-action" href={site.links.appautomatonSite}>
+            Explore App Automaton <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="feature-bottom">
+          <span>
+            {projectCount} public projects.
+            <br />
+            Source available. Possibilities shared.
+          </span>
+          <a href="/appautomaton/">
+            Inside the workshop <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <span class="feature-number" aria-hidden="true">
+          01
+        </span>
       </div>
-    </footer>
+    </section>
+    <section class="selected-work" aria-labelledby="selected-title">
+      <div class="section-head">
+        <span class="eyebrow">Different questions. The same care.</span>
+        <h2 id="selected-title" data-reveal>
+          Work takes
+          <br />
+          <em>many forms.</em>
+        </h2>
+      </div>
+      <div class="case-pair">
+        <article class="project-study study-research" data-reveal>
+          <a class="study-link" href={atomistic.url}>
+            <div class="study-art">
+              <span class="eyebrow">02 / Research into practice</span>
+              <img
+                src={researchArt.src}
+                width="1100"
+                height="1100"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="study-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+            <h3>
+              Scientific computing,
+              <br />
+              <em>closer to home.</em>
+            </h3>
+          </a>
+          <div class="study-details">
+            <span>MLX Atomistic</span>
+            <p>
+              Molecular dynamics and density functional theory on Apple silicon. An inspectable path
+              from scientific methods to a runtime on the Mac.
+            </p>
+          </div>
+        </article>
+        <article class="project-study study-creative" data-reveal>
+          <a class="study-link" href={setloom.url}>
+            <div class="study-art">
+              <span class="eyebrow">03 / Creative systems</span>
+              <img
+                src={creativeArt.src}
+                width="1100"
+                height="1100"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="study-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+            <h3>
+              Tools that leave
+              <br />
+              <em>room for taste.</em>
+            </h3>
+          </a>
+          <div class="study-details">
+            <span>Setloom</span>
+            <p>
+              A working environment for music, with editable sessions, stems, and listening notes.
+              The process has structure. The creative judgment stays human.
+            </p>
+          </div>
+        </article>
+      </div>
+      <div class="work-afterword">
+        <p>
+          Selected from the studio's public work.
+          <br />
+          Each project has its own source, documentation, and license terms.
+        </p>
+        <a class="text-action" href={site.links.appautomatonSite}>
+          See the complete collection <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+    <section class="practice" id="practice" aria-labelledby="practice-title" data-dark-scene>
+      <div class="practice-heading">
+        <span class="eyebrow">The practice</span>
+        <h2 id="practice-title" data-reveal>
+          Good systems
+          <br />
+          make room for
+          <br />
+          <em>human judgment.</em>
+        </h2>
+      </div>
+      <div class="practice-copy">
+        <p class="lead">
+          Applied AI becomes useful when it fits the work around it. We connect model capability
+          with clear interfaces, careful evaluation, and the realities of running a product.
+        </p>
+        <a class="text-action" href="/about/">
+          A closer look at the studio <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="practice-steps">
+        <article data-reveal>
+          <span class="eyebrow">01 / Understand</span>
+          <h3>
+            Find the right
+            <br />
+            question.
+          </h3>
+          <p>
+            Frame the problem, examine the constraints, and make the important decisions explicit.
+          </p>
+        </article>
+        <article data-reveal>
+          <span class="eyebrow">02 / Build</span>
+          <h3>
+            Give the idea
+            <br />a working form.
+          </h3>
+          <p>
+            Connect models, tools, data, and interfaces into a system people can inspect and use.
+          </p>
+        </article>
+        <article data-reveal>
+          <span class="eyebrow">03 / Refine</span>
+          <h3>
+            Learn from
+            <br />
+            the actual work.
+          </h3>
+          <p>
+            Evaluate behavior, improve the weak points, and leave a clear path for the next
+            iteration.
+          </p>
+        </article>
+      </div>
+    </section>
+    <section class="studio-links" aria-labelledby="elsewhere-title">
+      <span class="eyebrow">A little further</span>
+      <h2 id="elsewhere-title">Curiosity travels.</h2>
+      <a href={site.links.research}>
+        <span>Research systems</span>
+        <span class="studio-link-note">Methods, experiments, and technical work</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+      <a href={site.links.renocrypt}>
+        <span>RenoCrypt</span>
+        <span class="studio-link-note">Writing on machine learning, systems, and security</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </section>
   </main>
+  <Footer />
 </BaseLayout>
-
-<script>
-  import Lenis from "lenis";
-  import { mountConstellation } from "../scripts/constellation.js";
-
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* smooth scroll */
-  if (!reduced) {
-    const lenis = new Lenis({ lerp: 0.09 });
-    const raf = (t: number) => {
-      lenis.raf(t);
-      requestAnimationFrame(raf);
-    };
-    requestAnimationFrame(raf);
-  }
-
-  /* load: monument rises */
-  requestAnimationFrame(() =>
-    requestAnimationFrame(() => document.body.classList.add("loaded"))
-  );
-
-  /* reveals */
-  const io = new IntersectionObserver(
-    (es) => {
-      es.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("in");
-          io.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-  document.querySelectorAll("[data-reveal]").forEach((el) =>
-    reduced ? el.classList.add("in") : io.observe(el)
-  );
-
-  /* marquee: time drift + scroll coupling; monuments: lateral scroll drift */
-  const belt = document.getElementById("belt");
-  const hint = document.getElementById("scroll-hint");
-  /* sink: extra em the monument sits below its resting spot at scroll 0 — the
-     hero hairline "guards" the caps, then slides down the glyphs as you scroll */
-  const mons = [
-    { el: document.querySelector<HTMLElement>(".hero .monument"), amp: -6, sink: 0.46, top: 0, h: 1 },
-    { el: document.querySelector<HTMLElement>(".coda .monument"), amp: 8, sink: 0, top: 0, h: 1 },
-  ].filter((m) => m.el);
-  const measure = () => {
-    mons.forEach((m) => {
-      const r = m.el!.getBoundingClientRect();
-      m.top = r.top + scrollY;
-      m.h = r.height;
-    });
-  };
-  if (!reduced) {
-    measure();
-    document.fonts.ready.then(measure);
-    addEventListener("resize", measure, { passive: true });
-    const tick = (now: number) => {
-      if (belt) {
-        const half = belt.scrollWidth / 2;
-        if (half > 0) {
-          const x = -((now * 0.04 + scrollY * 0.35) % half);
-          belt.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
-        }
-      }
-      const rev = Math.min(1, scrollY / (innerHeight * 0.6));
-      const reveal = 1 - Math.pow(1 - rev, 3);
-      mons.forEach((m) => {
-        const pr = (scrollY + innerHeight - m.top) / (innerHeight + m.h);
-        if (pr > -0.2 && pr < 1.2) {
-          const y = m.sink * (1 - reveal);
-          m.el!.style.translate = `${(pr * m.amp).toFixed(2)}vw ${y.toFixed(3)}em`;
-        }
-      });
-      if (hint) hint.style.opacity = scrollY > 80 ? "0" : "1";
-      requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }
-
-  /* coda constellation */
-  const sky = document.getElementById("coda-sky") as HTMLCanvasElement | null;
-  const coda = document.getElementById("coda");
-  if (sky && coda) mountConstellation(sky, coda);
-
-  /* coda clock */
-  const clock = document.getElementById("coda-clock");
-  if (clock) {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const tick = () => {
-      const d = new Date();
-      const f = (z: string) =>
-        d.toLocaleTimeString("en-US", {
-          timeZone: z,
-          hour12: false,
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        });
-      clock.textContent = `${f(tz)} local · ${f("UTC")} UTC`;
-    };
-    tick();
-    setInterval(tick, 1000);
-  }
-</script>

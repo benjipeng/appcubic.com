@@ -1,32 +1,51 @@
 # AppCubic
 
-> An applied AI venture studio. AppCubic builds agentic systems, turns research into working products, and advises technical teams.
+> An independent applied AI studio. AppCubic builds agent workflows, turns research into working products, and advises technical teams.
 
-AppCubic is an applied AI venture studio, building since 2019. The work sits where prototypes have to become dependable: agent workflows, scientific and analytical tooling, and the products that grow out of them. Much of the studio's agent and research tooling is open source under App Automaton.
+AppCubic has been building since 2019. The studio connects model capability with clear interfaces, careful evaluation, and the practical work of running a product.
 
-## What the studio does
+## Studio
 
-- Agentic systems: reliable agent workflows with clear tool boundaries and honest evaluation, carried toward production.
-- Research to product: scientific and analytical workflows turned into systems people can run, built for correctness and repeatability.
-- Venture studio and advisory: early product strategy, technical diligence, grant support, and incubation for AI-first products.
+- [AppCubic](https://www.appcubic.com/): systems, research, and ventures.
+- [About the studio](https://www.appcubic.com/about/): the practice and its background.
+- [App Automaton overview](https://www.appcubic.com/appautomaton/): selected public work.
+- [App Automaton catalog](https://appautomaton.com/): the full public project collection.
 
-## App Automaton, the open-source workshop
+## Public projects
 
-App Automaton is the studio's open-source GitHub organization. Overview at https://www.appcubic.com/appautomaton/ and https://appautomaton.com.
+- [agent-designer](https://appautomaton.com/agent-designer/): The skills workspace. Issue-driven workflows, an MCP tool catalog, and bridge skills for agent-to-agent delegation with session continuity.
+- [document-SKILLs](https://appautomaton.com/document-SKILLs/): docx, xlsx, pptx, and pdf. Extraction, forms, formulas, and tracked changes. Runs on uv with PEP 723, no virtualenv.
+- [presentation](https://appautomaton.com/presentation/): Consulting-quality decks, from strategy storyboarding to pixel-perfect PDF or editable PPTX.
+- [webmaton](https://github.com/appautomaton/webmaton): Grounded web research. Citations, deterministic HTML-to-Markdown, and persistent sessions over Playwright, nodriver, and Chrome DevTools.
+- [playwright-skill](https://github.com/appautomaton/playwright-skill): Browser automation that also runs on Android via a Termux launcher patch and headless Chromium.
+- [latex-arxiv-SKILL](https://appautomaton.com/latex-arxiv-SKILL/): Turns a topic into an arXiv-ready ML review paper. Gated literature discovery, every citation verified, compiled to a two-column IEEEtran PDF.
+- [plexmaton](https://github.com/appautomaton/plexmaton): AI coding in your terminal, with model and skill choice, tool review, and resumable conversations.
+- [automaton](https://appautomaton.com/automaton/): A stage-gated harness. Frame, plan, review, execute, verify, resume. Installs as plain markdown.
+- [openclaw-monorepo](https://github.com/appautomaton/openclaw-monorepo): A repo-local OpenClaw workspace with JSON5 config, plugins, and Docker sandboxes.
+- [markmaton](https://appautomaton.com/markmaton/): HTML to Markdown for agent pipelines. A Go parser core wrapped in a Python CLI and API, on PyPI.
+- [docker-for-apple-container](https://appautomaton.com/docker-for-apple-container/): A stateless docker shim over Apple’s native container CLI on macOS, with no Docker Desktop.
+- [pi-arcweld](https://appautomaton.com/pi-arcweld/): A curated local layer welded to pinned upstream Pi. Extensions, system guidance, and MCP tooling join along one auditable seam, over a reproducible runtime.
+- [mlx-speech](https://appautomaton.com/mlx-speech/): Speech synthesis, voice cloning, dialogue, sound effects, and recognition, MLX-native on the Apple GPU.
+- [tnt-asr](https://appautomaton.com/tnt-asr/): A terminal voice-to-text TUI. Qwen3-ASR transcribes in about a second, fully local.
+- [ltx-video-mlx](https://github.com/appautomaton/ltx-video-mlx): Text- and image-to-video with synchronized audio on LTX-2.3 22B. On-device LoRA fine-tuning.
+- [mlx-cv](https://appautomaton.com/mlx-cv/): Open-vocabulary grounding, detection, depth and camera geometry, segmentation, and video tracking in pure MLX. Every model is checked against its upstream reference before it ships.
+- [mlx-spatial](https://appautomaton.com/mlx-spatial/): 3D and spatial inference on device with SAM 3D Objects, TRELLIS.2, WorldMirror, and MapAnything.
+- [mlx-atomistic](https://appautomaton.com/mlx-atomistic/): Atomistic simulation on Apple silicon. A DFT and molecular-dynamics runtime on MLX and Metal, running on the GPU the Mac already has.
+- [mlx-minimax-music3](https://appautomaton.com/mlx-minimax-music3/): MiniMax Music 3 in pure MLX. Lyrics and a structured caption to 44.1 kHz stereo, with phase-scoped model residency and no PyTorch at runtime.
+- [mlx-h3](https://appautomaton.com/mlx-h3/): MiniMax-H3 text to video and stereo audio, denoised together in one packed sequence. Phase-scoped model residency, no PyTorch at runtime.
+- [mlx-timesfm](https://github.com/appautomaton/mlx-timesfm): TimesFM 3.0 time-series forecasting on Apple silicon, with univariate and multivariate forecasts in pure MLX. Model weights have separate usage terms.
+- [setloom](https://appautomaton.com/setloom/): Producer-first co-production for club music. Musical intent into editable tracks, stems, renders, and listening notes, with the human keeping the taste gate.
 
-- [latex-arxiv-SKILL](https://appautomaton.com/latex-arxiv-SKILL/): a portable Agent Skill that turns a topic into an arXiv-ready ML review paper, gated and verified citation by citation.
-- [mlx-atomistic](https://appautomaton.com/mlx-atomistic/): an Apple-Silicon molecular dynamics and density-functional-theory runtime on MLX and Metal, with no CUDA, server, or cloud.
-- [docker-for-apple-container](https://appautomaton.com/docker-for-apple-container/): a stateless docker shim over Apple's native container CLI on macOS, with no Docker Desktop.
-- [agent-designer](https://appautomaton.com/agent-designer/): the skills workspace, with issue-driven workflows and bridge scripts for agent-to-agent delegation.
-- More across the organization: https://github.com/appautomaton
+Code and model terms vary by project. Read the source repository and model documentation before use.
 
-## Links
+## Further reading
 
-- [About](https://www.appcubic.com/about/): the studio and how it works.
-- [Research](https://research.appcubic.com): research systems.
-- [GitHub](https://github.com/appautomaton): open-source work.
-- [Benji Peng](https://benji.renocrypt.com): founder.
+- [RenoCrypt](https://www.renocrypt.com/): writing on machine learning, systems, and security.
+- [Research systems](https://research.appcubic.com/): research and technical work.
+- [Futur](https://futur.renocrypt.com/): product and operations.
+- [Benji Peng](https://benji.appcubic.com/): personal background.
+- [GitHub organization](https://github.com/appautomaton): source repositories.
 
-## Optional
+## Sitemap
 
-- Sitemap: /sitemap-index.xml
+- [Sitemap index](https://www.appcubic.com/sitemap-index.xml)
