@@ -1,20 +1,44 @@
 ---
-import { site } from "../data/site";
-
-const year = new Date().getFullYear();
+import { site } from '../data/site';
+import BrandMark from './BrandMark.astro';
+const onAbout = Astro.url.pathname === '/about/';
+const contactUrl = site.contact || (onAbout ? site.links.benji : '/about/');
+const contactLabel = site.contact
+  ? 'Start a conversation'
+  : onAbout
+    ? 'Meet Benji'
+    : 'Meet the studio';
 ---
 
-<footer class="site-footer">
-  <div class="footer-shell">
-    <div class="footer-info">
-      <a class="footer-brand" href="/">{site.name}</a>
-      <p class="copyright">&copy; {year} {site.name}. All rights reserved.</p>
-    </div>
-    <div class="footer-links" aria-label="Footer navigation">
-      <a href="/about/">About</a>
-      <a href="/appautomaton/">AppAutomaton</a>
-      <a href={site.links.github}>GitHub</a>
-      <a href={site.links.benji}>Benji</a>
-    </div>
+<footer class="studio-footer" id="contact">
+  <div class="footer-top">
+    <span class="eyebrow">Something worth making</span>
+    <span class="footer-note">
+      Independent studio.
+      <br />
+      Open to a good conversation.
+    </span>
+  </div>
+  <h2>
+    Let's make
+    <br />
+    <em>it work.</em>
+  </h2>
+  <a class="contact-action" href={contactUrl}>
+    {contactLabel} <span aria-hidden="true">↗</span>
+  </a>
+  <div class="footer-bottom">
+    <a class="brand" href="/">
+      <BrandMark />
+      <span>AppCubic</span>
+    </a>
+    <nav aria-label="Footer navigation">
+      <a href={site.links.appautomatonSite}>App Automaton</a>
+      <a href={site.links.research}>Research</a>
+      <a href={site.links.renocrypt}>RenoCrypt</a>
+      <a href={site.links.benji}>Benji Peng</a>
+      <a href={site.links.github}>Source</a>
+    </nav>
+    <span class="copyright">© {new Date().getFullYear()} AppCubic</span>
   </div>
 </footer>

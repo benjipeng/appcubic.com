@@ -1,64 +1,96 @@
 ---
-import Footer from "../components/Footer.astro";
-import Nav from "../components/Nav.astro";
-import { site } from "../data/site";
-import BaseLayout from "../layouts/BaseLayout.astro";
-
-const title = "About AppCubic | Applied AI Venture Studio";
-const description =
-  "AppCubic is an applied AI venture studio. It builds agentic systems, turns research into working products, and advises technical teams.";
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import StudioObject from '../components/StudioObject.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
 ---
 
-<BaseLayout title={title} description={description} pathname="/about/">
+<BaseLayout
+  title="About AppCubic | An independent applied AI studio"
+  description="AppCubic connects model capability, research, and product engineering. Meet the independent studio behind App Automaton and its public tools."
+  pathname="/about/"
+>
   <Nav />
-  <main class="page-main">
-    <div class="page-shell">
-      <p class="section-label">About</p>
-      <h1 class="page-title">A small studio for <em>applied AI</em>.</h1>
-      <p class="page-lede">
-        AppCubic started in 2019 as a hands-on building practice. Today it is the studio behind
-        applied AI products, research workflows, and advisory work for technical teams.
+  <main id="main" class="about-page">
+    <section class="about-hero">
+      <span class="eyebrow">The studio / Since 2019</span>
+      <h1>
+        A small studio.
+        <br />A wide field
+        <br />
+        of <em>possibility.</em>
+      </h1>
+      <StudioObject class="about-object" />
+      <p>
+        AppCubic is an independent applied AI venture studio. We build agentic systems, turn
+        research into working products, and advise technical teams.
       </p>
-
-      <div class="content">
+    </section>
+    <section class="about-story">
+      <span class="eyebrow">Close to the work</span>
+      <div>
+        <h2>
+          Curiosity,
+          <br />
+          with a practical side.
+        </h2>
         <p>
-          The work stays close to implementation. AppCubic cares about systems that survive contact
-          with real workflows: LLM orchestration with clear tool boundaries, evaluation loops, data
-          movement, product surfaces people actually use, and the operational choices that make a
-          prototype worth continuing.
+          AppCubic began in 2019 as a hands-on building practice. The work has grown across
+          e-commerce, logistics, decision support, camera-based motion understanding, and scientific
+          computing.
         </p>
-
-        <h2>What AppCubic builds around</h2>
         <p>
-          The studio draws on several streams of work: e-commerce and logistics systems, advisory
-          for early teams, LLM decision support, camera-based motion understanding, and research
-          tooling. What ties them together is not a vertical. It is the habit of turning uncertain
-          technical work into something a team can operate.
+          We stay close to implementation. That means understanding data and retrieval, making tool
+          boundaries explicit, evaluating what a system actually does, and shaping interfaces people
+          can work with.
         </p>
-
-        <h2>Open source</h2>
         <p>
-          Much of the studio's agent tooling is public. <a href={site.links.appautomaton}>App
-          Automaton</a> is the open-source side of AppCubic: portable skills for coding agents,
-          document and web tooling, multi-agent orchestration, and pure-MLX models for Apple
-          Silicon, all MIT licensed on GitHub.
-        </p>
-
-        <h2>How the work is framed</h2>
-        <p>
-          AppCubic treats AI as infrastructure for decisions and workflows rather than as a
-          decorative feature. Useful systems need retrieval and context design, honest evaluation,
-          clear points for human review, and the judgment to know where automation should stop.
-        </p>
-
-        <h2>Where to go next</h2>
-        <p>
-          Research systems live at <a href={site.links.research}>research.appcubic.com</a>. Adjacent
-          product and operations work connects through <a href={site.links.futur}>Futur</a>. Personal
-          background is at <a href={site.links.benji}>Benji's site</a>.
+          It also means knowing where judgment matters. Good automation leaves people with useful
+          control and results they can inspect.
         </p>
       </div>
-    </div>
+    </section>
+    <section class="about-open" data-dark-scene>
+      <span class="eyebrow">Built in public</span>
+      <h2>
+        An open workshop
+        <br />
+        for <em>better tools.</em>
+      </h2>
+      <p>
+        <a href={site.links.appautomatonSite}>App Automaton</a> brings together the studio's public
+        agent tools, local inference work, and creative systems. Explore each project's source and
+        documentation for its license and model terms.
+      </p>
+      <a class="pill-action" href={site.links.appautomatonSite}>
+        Explore the public work <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+    <section class="about-story">
+      <span class="eyebrow">People and perspective</span>
+      <div>
+        <h2>
+          Independent thinking.
+          <br />
+          Shared possibilities.
+        </h2>
+        <p>
+          Product strategy, technical diligence, research workflows, and the craft of building
+          systems are part of the same practice. We work from the problem outward, with enough care
+          to make the result useful.
+        </p>
+        <p>
+          Research systems live at <a href={site.links.research}>research.appcubic.com</a>. Product
+          and operations work connects through <a href={site.links.futur}>Futur</a>. Technical
+          writing on machine learning, systems, and security is collected at{' '}
+          <a href={site.links.renocrypt}>RenoCrypt</a>.
+        </p>
+        <a class="text-action" href={site.links.benji}>
+          More about Benji <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
   </main>
   <Footer />
 </BaseLayout>
