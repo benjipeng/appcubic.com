@@ -19,6 +19,7 @@ AppCubic has been building since 2019. The studio connects model capability with
 - [webmaton](https://github.com/appautomaton/webmaton): Grounded web research. Citations, deterministic HTML-to-Markdown, and persistent sessions over Playwright, nodriver, and Chrome DevTools.
 - [playwright-skill](https://github.com/appautomaton/playwright-skill): Browser automation that also runs on Android via a Termux launcher patch and headless Chromium.
 - [latex-arxiv-SKILL](https://appautomaton.com/latex-arxiv-SKILL/): Turns a topic into an arXiv-ready ML review paper. Gated literature discovery, every citation verified, compiled to a two-column IEEEtran PDF.
+- [delineate](https://delineate.appautomaton.com): Drawings that move when you do: portraits, gardens and page footers drawn in code as SVG, each with a skill your AI agent can follow to make one like it.
 - [plexmaton](https://github.com/appautomaton/plexmaton): AI coding in your terminal, with model and skill choice, tool review, and resumable conversations.
 - [automaton](https://appautomaton.com/automaton/): A stage-gated harness. Frame, plan, review, execute, verify, resume. Installs as plain markdown.
 - [openclaw-monorepo](https://github.com/appautomaton/openclaw-monorepo): A repo-local OpenClaw workspace with JSON5 config, plugins, and Docker sandboxes.

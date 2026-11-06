@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 const destination = new URL('../src/data/workshop.generated.json', import.meta.url);
+const ownSubdomain = /^https:\/\/[a-z0-9-]+\.appautomaton\.com\/?$/;
 export function normalizeCatalog(data) {
   if (
     data?.organization !== 'appautomaton' ||
@@ -15,7 +16,7 @@ export function normalizeCatalog(data) {
     seen.add(repo);
     if (typeof description !== 'string' || source !== `https://github.com/appautomaton/${repo}`)
       throw new Error(`Invalid source for ${repo}`);
-    if (site && site !== `https://appautomaton.com/${repo}/`)
+    if (site && site !== `https://appautomaton.com/${repo}/` && !ownSubdomain.test(site))
       throw new Error(`Invalid website for ${repo}`);
     return { repo, description, source, ...(site ? { site } : {}), group, groupName };
   });
