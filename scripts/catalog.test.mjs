@@ -15,6 +15,8 @@ test('catalog synchronization preserves canonical project facts and accepts new 
   const d = data();
   d.projects.push(record('new-project'));
   assert.equal(normalizeCatalog(d).projects.length, 4);
+  d.projects[3].site = 'https://new-project.appautomaton.com';
+  assert.equal(normalizeCatalog(d).projects[3].site, 'https://new-project.appautomaton.com');
   delete d.projects[3].site;
   assert.equal(normalizeCatalog(d).projects[3].site, undefined);
 });
@@ -23,6 +25,7 @@ test('catalog rejects changed ownership, stale domains, duplicate entries, and m
     (d) => (d.organization = 'elsewhere'),
     (d) => (d.projects[0].source = 'https://github.com/elsewhere/agent-designer'),
     (d) => (d.projects[0].site = 'https://appautomaton.renocrypt.com/agent-designer/'),
+    (d) => (d.projects[0].site = 'https://agent-designer.appautomaton.com.example.net'),
     (d) => d.projects.push(d.projects[0]),
     (d) => d.projects.pop(),
   ]) {

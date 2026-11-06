@@ -49,6 +49,14 @@
       "groupName": "Agent skills"
     },
     {
+      "repo": "delineate",
+      "description": "Drawings that move when you do: portraits, gardens and page footers drawn in code as SVG, each with a skill your AI agent can follow to make one like it.",
+      "source": "https://github.com/appautomaton/delineate",
+      "site": "https://delineate.appautomaton.com",
+      "group": "skills",
+      "groupName": "Agent skills"
+    },
+    {
       "repo": "plexmaton",
       "description": "AI coding in your terminal, with model and skill choice, tool review, and resumable conversations.",
       "source": "https://github.com/appautomaton/plexmaton",
